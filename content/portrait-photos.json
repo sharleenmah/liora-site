@@ -115,7 +115,8 @@
     "img": "/media/images/img7267-1-1.jpg"
   },
   {
-    "img": "/media/images/38.jpeg"
+    "img": "/media/images/38.jpeg",
+    "year": "2026"
   },
   {
     "img": "/media/images/9-img0587-blur-1-1.jpg",
@@ -138,6 +139,7 @@
     "year": "2025"
   },
   {
-    "img": "/media/images/51665735721c790b14a3co-3-1.jpg"
+    "img": "/media/images/51665735721c790b14a3co-3-1.jpg",
+    "year": "2019"
   }
 ]
