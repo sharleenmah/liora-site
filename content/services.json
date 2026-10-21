@@ -1,0 +1,50 @@
+[
+  {
+    "name": "PORTRAIT PHOTOGRAPHY",
+    "desc": "Studio, location and editorial portrait shoots for individuals, couples, families & groups.",
+    "price": "FROM £100",
+    "img": "/media/images/img5958-2.jpg"
+  },
+  {
+    "name": "EVENT PHOTOGRAPHY",
+    "desc": "Full event photography coverage, followed with professional editing and speedy image delivery.",
+    "price": "FROM £300",
+    "img": "/media/images/img6339-1.jpg"
+  },
+  {
+    "name": "WEDDING PHOTOGRAPHY",
+    "desc": "Elegant, candid coverage of your wedding day, capturing the emotion, details and quiet moments, followed with professional editing.",
+    "price": "FROM £650",
+    "img": "/media/images/img0743.jpg"
+  },
+  {
+    "name": "CUSTOM POSTER DESIGN",
+    "desc": "Customised poster design, showcasing your favourite films, albums, sports teams and cultural moments in a fun and creative way.",
+    "price": "FROM £45",
+    "img": "/media/images/poster-mockup-bm5w1-1.jpg"
+  },
+  {
+    "name": "WEDDING STATIONARY DESIGN",
+    "desc": "Custom-designed monograms, wedding invitations, enclosure cards, RSVP cards, thank you cards, orders of service, menus, favour tags and table numbers.",
+    "price": "FROM £75",
+    "img": "/media/images/a44e626a-cfca-4c58-8de5-263f548a6ff4.jpeg"
+  },
+  {
+    "name": "PRINTED MATERIAL DESIGN",
+    "desc": "Brochures, book covers, magazine and merchandise design, carefully crafted to authentically reflect your brand image.",
+    "price": "FROM £30",
+    "img": "/media/images/06jpg-1.jpg"
+  },
+  {
+    "name": "READY MADE PRINTS",
+    "desc": "Inspired by music, film, sports and contemporary visual culture, each print is a statement artwork: bold enough to stand alone, yet versatile enough to complement any room.",
+    "price": "FROM £10",
+    "img": "/media/images/stranger-things-mockup-3-1-1.jpg"
+  },
+  {
+    "name": "BESPOKE TRIP PLANNING",
+    "desc": "Bespoke trip planning, covering itineraries, flights and accommodation, designed to take the stress out of travelling.",
+    "price": "FROM £85",
+    "img": "/media/images/2d293fc3-bcdf-4343-96bf-111f414a5e26.jpg"
+  }
+]
