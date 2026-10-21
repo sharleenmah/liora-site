@@ -367,9 +367,6 @@ content:
         type: text
         label: "Details"
         description: "One per line, like  Dates: June 2026"
-      - name: ticket_text
-        type: string
-        label: "Ticket stub text"
       - name: slideshow
         type: image
         label: "Slideshow photos (change every 2 seconds)"
