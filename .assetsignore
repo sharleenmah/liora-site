@@ -1,0 +1,6 @@
+.git
+.gitignore
+.assetsignore
+.pages.yml
+README.md
+node_modules
