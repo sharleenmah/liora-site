@@ -41,7 +41,23 @@
   {
     "title": "Barcelona, Spain",
     "subtitle": "Bespoke Travel Itinerary",
+    "cover": "/media/images/park-guell-gaudi-7d2a8f25552ca5939e018b67688949e7-ebb42b602b8aa43e4745816ed948695d.webp",
+    "details": "DATE: June 2026\nTRIP TYPE: City Break\nGROUP SIZE: 3 People\nINCLUDED: Flights, Accommodation, Itinerary, Activities, Transport ",
+    "itinerary_screenshots": [
+      "/media/images/1-2.jpg",
+      "/media/images/barcelona-copy.jpg",
+      "/media/images/3-1.jpg",
+      "/media/images/5-1.jpg",
+      "/media/images/12-1.jpg"
+    ],
     "latitude": "41.3864",
-    "longitude": "2.1704"
+    "longitude": "2.1704",
+    "moments": [
+      "/media/images/img3435.jpeg",
+      "/media/images/img3175-1.jpeg",
+      "/media/images/img6018.jpeg",
+      "/media/images/img3233.jpeg",
+      "/media/images/img3138.jpeg"
+    ]
   }
 ]
