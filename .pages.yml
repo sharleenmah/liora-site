@@ -183,10 +183,16 @@ content:
         type: text
         label: "Graphic design page – intro"
         description: "Leave a blank line between paragraphs."
+      - name: design_tagline
+        type: string
+        label: "Graphic design page – slogan"
       - name: trip_intro
         type: text
         label: "Trip itineraries page – intro"
-        description: "Blank line between paragraphs. The first is shown large, the last is the slogan."
+        description: "Blank line between paragraphs."
+      - name: trip_tagline
+        type: string
+        label: "Trip itineraries page – slogan"
   - name: portrait
     label: "Portrait photos"
     type: file
@@ -381,12 +387,35 @@ content:
           media: images
           extensions: [jpg, jpeg, png, webp]
           multiple: true
+      - name: map_image
+        type: image
+        label: "Map picture (optional)"
+        description: "Optional: a map screenshot centred on the city. Leave empty to use the built-in pin map from the coordinates below."
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+      - name: latitude
+        type: string
+        label: "Map pin – latitude"
+        description: "e.g. 52.5200 for Berlin (search the city on Google Maps, right-click the map, click the numbers)."
+      - name: longitude
+        type: string
+        label: "Map pin – longitude"
+        description: "e.g. 13.4050 for Berlin."
       - name: moments
         type: image
         label: "Moments (photos)"
         options:
           media: images
           extensions: [jpg, jpeg, png, webp]
+          multiple: true
+      - name: moment_videos
+        type: file
+        label: "Moments (videos, MP4)"
+        description: "Short clips play silently on a loop. Keep each under about 25 MB (upload via GitHub if too big for the editor)."
+        options:
+          media: files
+          extensions: [mp4, mov, webm]
           multiple: true
       - name: review1_text
         type: text
