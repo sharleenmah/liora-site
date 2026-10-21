@@ -1,0 +1,4 @@
+/content/*
+  Cache-Control: no-cache
+/media/*
+  Cache-Control: public, max-age=86400

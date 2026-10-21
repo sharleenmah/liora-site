@@ -1,0 +1,501 @@
+# LIORA Creative Studio – editing setup for Pages CMS (pagescms.org)
+media:
+  - name: images
+    label: Photos
+    input: media/images
+    output: /media/images
+    rename: safe
+    categories: [image]
+  - name: files
+    label: Videos and PDFs
+    input: media/files
+    output: /media/files
+    rename: safe
+content:
+  - name: site
+    label: "Home page & site settings"
+    type: file
+    path: content/site.json
+    format: json
+    fields:
+      - name: hero_hi
+        type: string
+        label: "Hero – small line"
+      - name: hero_first
+        type: string
+        label: "Hero – first name"
+      - name: hero_last
+        type: string
+        label: "Hero – surname"
+      - name: founder
+        type: string
+        label: "Hero – founder line"
+      - name: hero_button
+        type: string
+        label: "Hero – button text"
+      - name: my_photo
+        type: image
+        label: "Your photo (home page)"
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+      - name: story_heading
+        type: string
+        label: "Story – heading"
+      - name: story_p1
+        type: text
+        label: "Story – paragraph 1"
+      - name: story_p2
+        type: text
+        label: "Story – paragraph 2"
+      - name: offer_heading
+        type: string
+        label: "Services section – heading"
+      - name: offer_intro
+        type: text
+        label: "Services section – intro"
+      - name: offer1_title
+        type: string
+        label: "Service row 1 – title"
+      - name: offer1_desc
+        type: string
+        label: "Service row 1 – text"
+      - name: offer2_title
+        type: string
+        label: "Service row 2 – title"
+      - name: offer2_desc
+        type: string
+        label: "Service row 2 – text"
+      - name: offer3_title
+        type: string
+        label: "Service row 3 – title"
+      - name: offer3_desc
+        type: string
+        label: "Service row 3 – text"
+      - name: studio_kicker
+        type: string
+        label: "Photo-reveal strip – small text"
+      - name: reviews_label
+        type: string
+        label: "Reviews – small heading"
+      - name: marquee
+        type: string
+        label: "Moving banner text"
+      - name: form_heading
+        type: text
+        label: "Enquiry form – heading"
+      - name: random_photos
+        type: image
+        label: "Photos that pop up on the intro and the cursor strip"
+        description: "Add as many as you like. If empty, placeholder tones are shown."
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+          multiple: true
+      - name: email
+        type: string
+        label: "Email address"
+      - name: linkedin
+        type: string
+        label: "LinkedIn link"
+      - name: instagram
+        type: string
+        label: "Instagram link"
+      - name: tiktok
+        type: string
+        label: "TikTok link"
+      - name: youtube
+        type: string
+        label: "YouTube link (leave empty to hide)"
+      - name: footer_text
+        type: string
+        label: "Footer text"
+      - name: guide_heading
+        type: string
+        label: "Pricing guide – heading"
+      - name: guide_text
+        type: text
+        label: "Pricing guide – text"
+      - name: guide_pdf
+        type: file
+        label: "Pricing guide PDF"
+        description: "Upload the PDF here. The Download button on the Services page uses it."
+        options:
+          media: files
+          extensions: [pdf]
+      - name: form_key
+        type: string
+        label: "Contact form key (from web3forms.com)"
+        description: "Paste your free Web3Forms access key so enquiries reach your inbox."
+  - name: reviews
+    label: "Reviews (home page)"
+    type: file
+    path: content/reviews.json
+    format: json
+    list: true
+    fields:
+      - name: text
+        type: text
+        label: "Review"
+      - name: by
+        type: string
+        label: "Name | Service"
+  - name: categories
+    label: "Portfolio menu pictures"
+    type: file
+    path: content/categories.json
+    format: json
+    list: true
+    fields:
+      - name: name
+        type: string
+        label: "Name"
+      - name: to
+        type: string
+        label: "Link (leave as is)"
+      - name: img
+        type: image
+        label: "Picture that appears on hover"
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+  - name: pages
+    label: "Page text (portrait, event, design, trips)"
+    type: file
+    path: content/pages.json
+    format: json
+    fields:
+      - name: portrait_text
+        type: text
+        label: "Portrait page – text"
+        description: "Leave a blank line between paragraphs."
+      - name: portrait_tagline
+        type: string
+        label: "Portrait page – slogan"
+      - name: event_text
+        type: text
+        label: "Event page – text"
+        description: "Leave a blank line between paragraphs."
+      - name: event_tagline
+        type: string
+        label: "Event page – slogan"
+      - name: design_intro
+        type: text
+        label: "Graphic design page – intro"
+        description: "Leave a blank line between paragraphs."
+      - name: trip_intro
+        type: text
+        label: "Trip itineraries page – intro"
+        description: "Blank line between paragraphs. The first is shown large, the last is the slogan."
+  - name: portrait
+    label: "Portrait photos"
+    type: file
+    path: content/portrait-photos.json
+    format: json
+    list: true
+    fields:
+      - name: img
+        type: image
+        label: "Photo (shown in the gallery)"
+        description: "Upload a JPG about 2000px wide for fast loading."
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+      - name: hd
+        type: image
+        label: "Larger version (optional)"
+        description: "Shown when the photo is clicked. Leave empty to reuse the photo."
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+      - name: caption
+        type: string
+        label: "Caption (used for screen readers)"
+      - name: year
+        type: string
+        label: "Year"
+  - name: event
+    label: "Event photos"
+    type: file
+    path: content/event-photos.json
+    format: json
+    list: true
+    fields:
+      - name: img
+        type: image
+        label: "Photo (shown in the gallery)"
+        description: "Upload a JPG about 2000px wide for fast loading."
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+      - name: hd
+        type: image
+        label: "Larger version (optional)"
+        description: "Shown when the photo is clicked. Leave empty to reuse the photo."
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+      - name: caption
+        type: string
+        label: "Caption (used for screen readers)"
+      - name: year
+        type: string
+        label: "Year"
+  - name: projects
+    label: "Graphic design – projects"
+    type: file
+    path: content/design-projects.json
+    format: json
+    list: true
+    fields:
+      - name: title
+        type: string
+        label: "Title"
+      - name: subtitle
+        type: string
+        label: "Subtitle"
+      - name: img
+        type: image
+        label: "Cover image"
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+      - name: desc
+        type: text
+        label: "Description"
+      - name: details
+        type: text
+        label: "Details"
+        description: "One per line, like  Role: Designer"
+      - name: images
+        type: image
+        label: "Project images (first one is shown large)"
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+          multiple: true
+  - name: posters
+    label: "Graphic design – poster wall"
+    type: file
+    path: content/posters.json
+    format: json
+    list: true
+    fields:
+      - name: img
+        type: image
+        label: "Photo (shown in the gallery)"
+        description: "Upload a JPG about 2000px wide for fast loading."
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+      - name: hd
+        type: image
+        label: "Larger version (optional)"
+        description: "Shown when the photo is clicked. Leave empty to reuse the photo."
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+      - name: alt
+        type: image
+        label: "In-place photo (optional)"
+        description: "Shown when the enlarged poster is clicked, e.g. a mockup on a wall."
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+      - name: caption
+        type: string
+        label: "Caption (used for screen readers)"
+      - name: year
+        type: string
+        label: "Year"
+  - name: commissions
+    label: "Graphic design – one-off commissions"
+    type: file
+    path: content/commissions.json
+    format: json
+    list: true
+    fields:
+      - name: img
+        type: image
+        label: "Photo (shown in the gallery)"
+        description: "Upload a JPG about 2000px wide for fast loading."
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+      - name: hd
+        type: image
+        label: "Larger version (optional)"
+        description: "Shown when the photo is clicked. Leave empty to reuse the photo."
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+      - name: caption
+        type: string
+        label: "Caption (used for screen readers)"
+      - name: year
+        type: string
+        label: "Year"
+  - name: trips
+    label: "Trip itineraries"
+    type: file
+    path: content/trips.json
+    format: json
+    list: true
+    fields:
+      - name: title
+        type: string
+        label: "Destination"
+      - name: subtitle
+        type: string
+        label: "Subtitle"
+      - name: cover
+        type: image
+        label: "Cover image"
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+      - name: desc
+        type: text
+        label: "Short note"
+      - name: details
+        type: text
+        label: "Details"
+        description: "One per line, like  Dates: June 2026"
+      - name: ticket_text
+        type: string
+        label: "Ticket stub text"
+      - name: slideshow
+        type: image
+        label: "Slideshow photos (change every 2 seconds)"
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+          multiple: true
+      - name: slideshow_caption
+        type: string
+        label: "Slideshow caption"
+      - name: itinerary_screenshots
+        type: image
+        label: "Itinerary screenshots"
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+          multiple: true
+      - name: moments
+        type: image
+        label: "Moments (photos)"
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+          multiple: true
+      - name: review1_text
+        type: text
+        label: "Review 1"
+      - name: review1_by
+        type: string
+        label: "Review 1 – name"
+      - name: review2_text
+        type: text
+        label: "Review 2"
+      - name: review2_by
+        type: string
+        label: "Review 2 – name"
+      - name: review3_text
+        type: text
+        label: "Review 3 (optional)"
+      - name: review3_by
+        type: string
+        label: "Review 3 – name"
+  - name: services
+    label: "Services & prices"
+    type: file
+    path: content/services.json
+    format: json
+    list: true
+    fields:
+      - name: name
+        type: string
+        label: "Service name"
+      - name: desc
+        type: text
+        label: "Description"
+      - name: price
+        type: string
+        label: "Price button text"
+        description: "e.g. FROM £100"
+      - name: img
+        type: image
+        label: "Background photo"
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+  - name: instagram
+    label: "Contact – Instagram posts"
+    type: file
+    path: content/instagram-posts.json
+    format: json
+    list: true
+    fields:
+      - name: type
+        type: select
+        label: "Post type"
+        options:
+          values: [image, carousel, video]
+      - name: images
+        type: image
+        label: "Image(s) – one for an image, several for a swipeable carousel"
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+          multiple: true
+      - name: video
+        type: file
+        label: "Video (for video posts)"
+        options:
+          media: files
+          extensions: [mp4, mov, webm]
+      - name: link
+        type: string
+        label: "Link to the post"
+  - name: tiktok
+    label: "Contact – TikTok posts"
+    type: file
+    path: content/tiktok-posts.json
+    format: json
+    list: true
+    fields:
+      - name: type
+        type: select
+        label: "Post type"
+        options:
+          values: [image, carousel, video]
+      - name: images
+        type: image
+        label: "Image(s) – one for an image, several for a swipeable carousel"
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+          multiple: true
+      - name: video
+        type: file
+        label: "Video (for video posts)"
+        options:
+          media: files
+          extensions: [mp4, mov, webm]
+      - name: link
+        type: string
+        label: "Link to the post"
+  - name: terms
+    label: "Terms & Conditions"
+    type: file
+    path: content/terms.json
+    format: json
+    list: true
+    fields:
+      - name: name
+        type: string
+        label: "Service name"
+      - name: body
+        type: text
+        label: "Terms"
+        description: "## = clause heading, ### = sub-heading, lines starting with - are bullet points, blank line = new paragraph."
