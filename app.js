@@ -34,7 +34,9 @@ function build(D){
   var rp=A(site.random_photos,null);
   CONTENT.photos=(rp?rp.map(function(x){return{img:x}}):ptr.concat(evt).filter(function(p){return p.img}).map(function(p){return{img:p.img}}));
   if(!CONTENT.photos.length)CONTENT.photos=E(11).map(function(){return{img:""}});
-  CONTENT.categories=A(D.categories,[]).map(function(c,i){return{name:c.name,to:c.to||"/portfolio",img:c.img||"",grad:GR[i%GR.length]}});
+  var KNOWN={"/portrait-photography":1,"/event-photography":1,"/graphic-design":1,"/trip-planning":1};
+  function catTo(c){var t=(c.to||"").trim();if(KNOWN[t])return t;var n=(c.name||"").toLowerCase();return/portrait/.test(n)?"/portrait-photography":/event/.test(n)?"/event-photography":/design/.test(n)?"/graphic-design":/trip|travel|itiner/.test(n)?"/trip-planning":"/portfolio"}
+  CONTENT.categories=A(D.categories,[]).map(function(c,i){return{name:c.name,to:catTo(c),img:c.img||"",grad:GR[i%GR.length]}});
   CONTENT.reviews=A(D.reviews,[{text:"",by:""}]);
   CONTENT.pages={
    ptr:{title:"PORTRAIT PHOTOGRAPHY",next:["/event-photography","NEXT: EVENT PHOTOGRAPHY"],photos:ptr,text:paras(pg.portrait_text),tag:pg.portrait_tagline||""},
@@ -44,7 +46,7 @@ function build(D){
   CONTENT.design={intro:paras(pg.design_intro).join("\n\n"),projects:A(D["design-projects"],[]).map(function(p){var im=A(p.images,E(5));return{title:p.title||"",sub:p.subtitle||"",img:p.img||im[0]||"",desc:p.desc||"",meta:meta(p.details),imgs:im}})};
   CONTENT.tripIntro=paras(pg.trip_intro);
   CONTENT.trips=A(D.trips,[]).map(function(t,i){return{title:t.title||"Destination "+(i+1),sub:t.subtitle||"",cover:t.cover||"",stub:t.ticket_text===undefined?"ADMIT ONE":t.ticket_text,stubAt:1,leafAt:4,polyCap:t.slideshow_caption||"",desc:t.desc||"",
-    meta:meta(t.details),slides:A(t.slideshow,E(4)),notes:A(t.itinerary_screenshots,E(5)),moments:A(t.moments,E(6)),
+    meta:meta(t.details),slides:A(t.slideshow,E(4)),notes:A(t.itinerary_screenshots,E(5)),moments:A(A(t.moments,[]).concat(A(t.moment_videos,[])),E(6)),
     reviews:[1,2,3].map(function(n){return{text:t["review"+n+"_text"],by:t["review"+n+"_by"]||""}}).filter(function(r){return r.text})}});
   CONTENT.svc=A(D.services,[]).map(function(s){return{name:s.name||"",desc:s.desc||"",price:s.price||"",img:s.img||""}});
   CONTENT.guideUrl=site.guide_pdf||"";
@@ -78,6 +80,8 @@ CONTENT.reviews.forEach(function(r,i){
 });
 function go(i){cur=i;var n=sl.children.length;[].forEach.call(sl.children,function(f,k){var o=(k-i+n)%n;f.style.transform=["none","rotate(4deg) translate(22px,16px)","rotate(-4deg) translate(-20px,22px)"][o]||"scale(.9)";f.style.opacity=o==0?1:o<3?.5:0;f.style.zIndex=n-o});[].forEach.call(dt.children,function(b,k){b.classList.toggle("on",k==i)})}
 function auto(){clearInterval(timer);timer=setInterval(function(){go((cur+1)%CONTENT.reviews.length)},5500)}
+function fitRev(){[].forEach.call(sl.children,function(f){var q=f.querySelector("blockquote");if(!q)return;q.style.fontSize="";var s=parseFloat(getComputedStyle(q).fontSize);while(f.scrollHeight>f.clientHeight+1&&s>13){s-=1;q.style.fontSize=s+"px"}})}
+fitRev();addEventListener("resize",fitRev);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitRev);
 go(0);auto();
 /* page switching with a yellow wipe + real URLs (History API) */
 var ROUTES={"/":"home","/portfolio":"pf","/portrait-photography":"ptr","/event-photography":"evt","/graphic-design":"dsn","/trip-planning":"trp","/services":"svc","/contact":"ct","/ts-cs":"tc"},
@@ -165,7 +169,7 @@ $("dsn").innerHTML=back+'<h1>GRAPHIC DESIGN</h1><div class="gi one"><p>'+CONTENT
  +'<section class="sec" id="s2"><h2>Poster wall</h2><p>Drag them around. Click one to see it in place.</p><div class="pw" id="pw"><span class="sm">DRAG · CLICK</span></div></section>'
  +'<section class="sec" id="s3"><h2>One-off commissions</h2><p>Bespoke pieces created for a single client or occasion, from custom artwork and merchandise to one-time design requests.</p><div class="ext">'+CONTENT.pages.ext.photos.map(function(p,i){return'<button class="fr g" type="button" data-p="ext" data-i="'+i+'" aria-label="Open '+p.cap+'"><div class="ph" style="background:'+bg({img:p.img},i+11)+'"></div></button>'}).join("")+'</div></section>';
 $("dsn").querySelectorAll(".g").forEach(function(g){io.observe(g)});
-$("trp").innerHTML=back+'<h1>TRIP ITINERARIES</h1><div class="gi one tri">'+CONTENT.tripIntro.map(function(x,i){return"<p"+(i==0?' class="lead"':i==3?' class="tag2"':"")+">"+x+"</p>"}).join("")+'</div><div class="cards" style="margin-top:6vh">'+CONTENT.trips.map(function(p,i){return card("data-tr",p,i)}).join("")+'</div>';
+$("trp").innerHTML=back+'<h1>TRIP ITINERARIES</h1><div class="gi one tri">'+CONTENT.tripIntro.map(function(x,i){return"<p"+(i==3?' class="tag2"':"")+">"+x+"</p>"}).join("")+'</div><div class="cards" style="margin-top:6vh">'+CONTENT.trips.map(function(p,i){return card("data-tr",p,i)}).join("")+'</div>';
 var pw=$("pw"),zi=5,dr=null;
 CONTENT.pages.psr.photos.forEach(function(p,i){var d=document.createElement("div");d.className="po g";d.dataset.p="psr";d.dataset.i=i;
   d.style.cssText="width:"+(110+(i*29)%60)+"px;aspect-ratio:2/3;left:"+(4+(i*37)%70)+"%;top:"+(8+(i*53)%62)+"%;--r:"+(((i*7)%9)-4)+"deg";d.innerHTML='<div style="background:'+bg({img:p.img},i+2)+'"></div>';pw.appendChild(d)});
@@ -182,7 +186,7 @@ function closePanel(){if(!pjc)return;clearInterval(pjT);pj.style.clipPath=rectCl
 function projHTML(p){return'<h2>'+p.title+'</h2><div class="pm"><ul>'+p.meta.map(function(m){return'<li><b>'+m[0]+'</b>'+m[1]+'</li>'}).join("")+'</ul><p>'+p.desc+'</p></div><div class="pim">'+p.imgs.map(function(s,i){return'<div'+(i==0?' class="w"':'')+' style="background:'+bg({img:s},i+3)+'"></div>'}).join("")+'</div>'}
 function tripHTML(t){return'<h2>'+t.title+'</h2><p style="max-width:60ch;margin-bottom:4vh">'+t.desc+'</p><div class="pm"><ul>'+t.meta.map(function(m){return'<li><b>'+m[0]+'</b>'+m[1]+'</li>'}).join("")+'</ul><div class="poly" id="poly">'+t.slides.map(function(s,i){return'<i'+(i==0?' class="on"':'')+' style="background:'+bg({img:s},i+5)+'"></i>'}).join("")+'<span>'+(t.polyCap||t.title+", 2026")+'</span></div></div>'
   +'<h3>The itinerary</h3><div class="notes">'+t.notes.map(function(n,i){return'<div class="note" style="--r:'+(((i*5)%7)-3)+'deg'+(n?';background:url('+n+') center/cover':'')+'">'+(n?'':'Itinerary screenshot')+'</div>'}).join("")+'</div>'
-  +'<h3>Moments</h3><div class="mo">'+t.moments.map(function(m,i){return'<div style="background:'+bg({img:m},i+7)+'">'+(t.stub&&i==t.stubAt?'<span class="stub">'+t.stub+'</span>':'')+(i==t.leafAt?'<span class="leaf"'+(t.notes[0]?' style="background-image:url('+t.notes[0]+')"':'')+'></span>':'')+'</div>'}).join("")+'</div>'
+  +'<h3>Moments</h3><div class="mo">'+t.moments.map(function(m,i){var vid=/\.(mp4|mov|webm|m4v)$/i.test(m);return'<div style="background:'+(vid?'#1b1b1d':bg({img:m},i+7))+'">'+(vid?'<video src="'+m+'" autoplay muted loop playsinline></video>':'')+(t.stub&&i==t.stubAt?'<span class="stub">'+t.stub+'</span>':'')+(i==t.leafAt?'<span class="leaf"'+(t.notes[0]?' style="background-image:url('+t.notes[0]+')"':'')+'></span>':'')+'</div>'}).join("")+'</div>'
   +'<h3>In their words</h3><div class="rev">'+t.reviews.map(function(r){return'<blockquote>'+r.text+'<span>'+r.by+'</span></blockquote>'}).join("")+'</div>'}
 function slideshow(){var s=document.querySelectorAll("#poly i"),k=0;clearInterval(pjT);pjT=setInterval(function(){s[k].classList.remove("on");k=(k+1)%s.length;s[k].classList.add("on")},1800)}
 document.addEventListener("click",function(e){var c=e.target.closest("[data-pj]"),t=e.target.closest("[data-tr]"),tb=e.target.closest(".tabs button"),m=e.target.closest(".tg button");
