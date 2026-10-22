@@ -32,7 +32,7 @@ function build(D){
   CONTENT.portrait={img:site.my_photo||""};
   var ptr=pho(D["portrait-photos"],"Portrait",9),evt=pho(D["event-photos"],"Event",9);
   var rp=A(site.random_photos,null);
-  CONTENT.photos=(rp?rp.map(function(x){return{img:x}}):ptr.concat(evt).filter(function(p){return p.img}).map(function(p){return{img:p.img}}));
+  var seen={};CONTENT.photos=[].concat(rp||[],ptr.map(function(p){return p.img}),evt.map(function(p){return p.img}),A(D.posters,[]).map(function(p){return p.img}),A(D.commissions,[]).map(function(p){return p.img})).filter(function(x){if(!x||seen[x])return false;seen[x]=1;return true}).map(function(x){return{img:x}});
   if(!CONTENT.photos.length)CONTENT.photos=E(11).map(function(){return{img:""}});
   var KNOWN={"/portrait-photography":1,"/event-photography":1,"/graphic-design":1,"/trip-planning":1};
   function catTo(c){var t=(c.to||"").trim();if(KNOWN[t])return t;var n=(c.name||"").toLowerCase();return/portrait/.test(n)?"/portrait-photography":/event/.test(n)?"/event-photography":/design/.test(n)?"/graphic-design":/trip|travel|itiner/.test(n)?"/trip-planning":"/portfolio"}
@@ -43,7 +43,7 @@ function build(D){
    evt:{title:"EVENT PHOTOGRAPHY",next:["/portrait-photography","NEXT: PORTRAIT PHOTOGRAPHY"],photos:evt,text:paras(pg.event_text),tag:pg.event_tagline||""},
    psr:{photos:A(D.posters,mkph("Poster",14)).map(function(p,i){return{img:p.img||"",hd:"",alt:p.alt?p.alt:undefined,ar:.667,arAlt:1.33,cap:p.caption||"Poster "+(i+1),year:p.year||""}})},
    ext:{photos:pho(D.commissions,"Commission",8)}};
-  CONTENT.design={intro:paras(pg.design_intro).join("\n\n"),projects:A(D["design-projects"],[]).map(function(p){var im=A(p.images,E(5));return{title:p.title||"",sub:p.subtitle||"",img:p.img||im[0]||"",desc:p.desc||"",meta:meta(p.details),imgs:im}})};
+  CONTENT.design={intro:paras(pg.design_intro).join("\n\n"),projects:A(D["design-projects"],[]).map(function(p){var im=A(p.images,E(5));var sl=function(x){return Array.isArray(x)?x:[]};return{title:p.title||"",sub:p.subtitle||"",img:p.img||im[0]||"",desc:p.desc||"",ss:[{imgs:sl(p.slideshow_1),at:p.slideshow_1_after},{imgs:sl(p.slideshow_2),at:p.slideshow_2_after}],meta:meta(p.details),imgs:im}})};
   var ti=paras(pg.trip_intro),tt=(pg.trip_tagline||"").trim();if(!tt&&ti.length>1)tt=ti.pop();
   CONTENT.tripIntro=ti;CONTENT.tripTag=tt;CONTENT.designTag=(pg.design_tagline||"").trim()||"Bold ideas. Thoughtful details. Designs made to be remembered.";
   CONTENT.trips=A(D.trips,[]).map(function(t,i){return{title:t.title||"Destination "+(i+1),sub:t.subtitle||"",cover:t.cover||"",stub:t.ticket_text===undefined?"ADMIT ONE":t.ticket_text,stubAt:1,leafAt:4,polyCap:t.slideshow_caption||"",desc:t.desc||"",
@@ -86,12 +86,12 @@ fitRev();addEventListener("resize",fitRev);if(document.fonts&&document.fonts.rea
 go(0);auto();
 /* page switching with a yellow wipe + real URLs (History API) */
 var ROUTES={"/":"home","/portfolio":"pf","/portrait-photography":"ptr","/event-photography":"evt","/graphic-design":"dsn","/trip-planning":"trp","/services":"svc","/contact":"ct","/ts-cs":"tc"},
- TITLES={pf:"Portfolio",ptr:"Portrait Photography",evt:"Event Photography",dsn:"Graphic Design",trp:"Trip Itineraries",svc:"Services",ct:"Contact",tc:"Terms & Conditions"},
- HOMETITLE="LIORA Creative Studio | Photography, Graphic Design & Trip Planning",
+ META={"home": ["Bristol Photographer & Graphic Designer | LIORA Creative Studio", "LIORA Creative Studio offers portrait, event and wedding photography, graphic design, wedding stationery, custom posters and bespoke trip itineraries. Based in Bristol, working between South-West England and London."], "pf": ["Portfolio | LIORA Creative Studio", "Browse the portfolio of Sharleen Mahembe: portrait and event photography, graphic design and trip itineraries."], "ptr": ["Bristol Portrait Photographer | LIORA Creative Studio", "Relaxed, authentic portrait photography in Bristol: headshots, editorial portraits, couples, families and groups, delivered with professional editing."], "evt": ["Bristol Event Photographer | LIORA Creative Studio", "Event photography in Bristol, the South West and London: weddings, corporate events, concerts, birthdays and celebrations, with fast delivery and professional editing."], "dsn": ["Bristol Graphic Designer | LIORA Creative Studio", "Bristol graphic designer creating wedding stationery, custom posters, brochures, magazines and print-ready design that reflects your story or brand."], "trp": ["Trip Itineraries | LIORA Creative Studio", "Personalised trip itineraries, flights and accommodation planning that take the stress out of travelling, from city breaks to group trips."], "svc": ["Photography & Graphic Design Services in Bristol | LIORA Creative Studio", "Services and starting prices: portrait, event and wedding photography, poster and wedding stationery design, printed materials and bespoke trip planning in Bristol."], "ct": ["Contact | LIORA Creative Studio", "Get in touch with LIORA Creative Studio to book a photoshoot, commission a design or plan a trip."], "tc": ["Terms & Conditions | LIORA Creative Studio", "Terms and conditions for portrait and event photography, graphic design and trip planning services from LIORA Creative Studio."]},
+ PATHS={"home": "/", "pf": "/portfolio", "ptr": "/portrait-photography", "evt": "/event-photography", "dsn": "/graphic-design", "trp": "/trip-planning", "svc": "/services", "ct": "/contact", "tc": "/ts-cs"},
  cv="home",wipe=$("wipe"),busy=false;
 function norm(p){p=(p||"/").replace(/\/index\.html$/,"/").replace(/\/+$/,"");return p||"/"}
 function show(p,h){var k=ROUTES[norm(p)]||"home";["home","pf","ptr","evt","dsn","trp","svc","ct","tc"].forEach(function(n){$(n).classList.toggle("on",n==k)});cv=k;document.body.classList.remove("hov");
-  document.title=k=="home"?HOMETITLE:TITLES[k]+" | LIORA Creative Studio";
+  document.title=META[k][0];var md=document.querySelector('meta[name="description"]'),cn=document.querySelector('link[rel="canonical"]');if(md)md.setAttribute("content",META[k][1]);if(cn)cn.setAttribute("href","https://lioracreativestudio.com"+(PATHS[k]=="/"?"/":PATHS[k]));
   var el=null;if(k=="home"&&h&&h.length>1){try{el=document.querySelector(h)}catch(e){}}if(el)el.scrollIntoView();else scrollTo(0,0);if(k=="ptr"||k=="evt")sizeHS(k)}
 function nav(p,h,push){h=h||"";var same=(ROUTES[norm(p)]||"home")==cv;
   function doit(){if(push&&(norm(p)+h)!==(location.pathname+location.hash))history.pushState(null,"",norm(p)+h);show(p,h)}
@@ -137,7 +137,7 @@ rv.addEventListener("pointermove",function(e){var b=rv.getBoundingClientRect(),x
 new IntersectionObserver(function(e){vis=e[0].isIntersecting}).observe(rv);
 setInterval(function(){if(vis&&Date.now()-lastP>2000){var b=rv.getBoundingClientRect();spawn(b.width*(.15+Math.random()*.7),b.height*(.2+Math.random()*.6))}},1000);
 /* portrait and event pages (edit this block, or let the CMS) */
-var AR=[.75,.8,1,.67,.8,.75,1.33,.8,.75],HH=[58,46,64,50,60,52,44,62,54],MT=[0,-7,5,-4,8,-6,4,-8,3],io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});
+var AR=[.75,.8,1,.67,.8,.75,1.33,.8,.75],HH=[68,62,72,64,70,63,60,72,66],MT=[0,-7,5,-4,8,-6,4,-8,3],io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});
 function pad(n){return(n<10?"0":"")+n}
 function buildG(id){var P=CONTENT.pages[id],fr=P.photos.map(function(p,i){return'<button class="fr g'+(p.img?' real':'')+'" type="button" data-p="'+id+'" data-i="'+i+'" aria-label="Open '+p.cap+'" style="'+(p.img?'':'aspect-ratio:'+AR[i%AR.length]+';')+'height:'+HH[i%HH.length]+'vh;margin-top:'+MT[i%MT.length]+'vh">'+(p.img?pic(p.img,p.cap):'<div class="ph" style="background:'+bg({img:p.img},i+(id=="evt"?5:0))+'"></div>')+'</button>'}).join("");
   $(id).innerHTML='<a class="sm" href="/portfolio" style="color:var(--yel)">← PORTFOLIO</a><div class="ic" style="margin-top:1.4rem"></div><h1>'+P.title+'</h1><div class="gi"><div>'+P.text.map(function(x){return"<p>"+x+"</p>"}).join("")+'</div><p class="tag">'+P.tag+'</p></div><div class="tg sm"><button class="on" data-m="strip" type="button">STRIP</button><span>/</span><button data-m="grid" type="button">GRID</button></div><div class="hs"><div class="hsv"><div class="hst">'+fr+'</div><div class="hsb"><span class="sm" id="'+id+'n">01 / '+pad(P.photos.length)+'</span><i><b></b></i></div></div></div><div style="text-align:center;padding:4vh 0 2vh"><a class="btn sm" href="'+P.next[0]+'">'+P.next[1]+'</a></div>';
@@ -148,7 +148,7 @@ function hsUpdate(){if(cv!="ptr"&&cv!="evt"||$(cv).classList.contains("gmode"))r
   p=span>0?Math.max(0,Math.min(1,-hs.getBoundingClientRect().top/span)):0,c=innerWidth/2,best=0,bd=1e9;
   t.style.transform="translate3d("+(-p*(t._mx||0))+"px,0,0)";
   [].forEach.call(t.children,function(f,i){var b=f.getBoundingClientRect(),d=Math.abs(b.left+b.width/2-c)/innerWidth;if(d<bd){bd=d;best=i}
-    f.style.transform="scale("+Math.max(.82,1-d*.3)+")";f.style.opacity=Math.max(.45,1-d*.9)});
+    f.style.transform="scale("+Math.max(.92,1-d*.16)+")";f.style.opacity=Math.max(.45,1-d*.9)});
   $(cv+"n").textContent=pad(best+1)+" / "+pad(t.children.length);v.querySelector(".hsb b").style.transform="scaleX("+p+")"}
 buildG("ptr");buildG("evt");
 ["ptr","evt"].forEach(function(id){[].forEach.call($(id).querySelectorAll(".pic"),function(im){im.addEventListener("load",function(){if(cv==id)sizeHS(id)})})});
@@ -188,14 +188,20 @@ var pj=$("pj"),pjc=null,pjT=null;
 function rectClip(c){var r=c.getBoundingClientRect();return"inset("+r.top+"px "+(innerWidth-r.right)+"px "+(innerHeight-r.bottom)+"px "+r.left+"px round 6px)"}
 function openPanel(c,html,cb){$("pji").innerHTML=html;pj.style.transition="none";pj.style.clipPath=rectClip(c);pj.classList.add("on");pj.scrollTop=0;document.body.classList.add("lock");pjc=c;
   void pj.offsetWidth;pj.style.transition="clip-path .7s cubic-bezier(.7,0,.2,1)";pj.style.clipPath="inset(0 0 0 0 round 0)";if(cb)cb()}
-function closePanel(){if(!pjc)return;clearInterval(pjT);pj.style.clipPath=rectClip(pjc);var c=pjc;pjc=null;setTimeout(function(){pj.classList.remove("on");document.body.classList.remove("lock")},700)}
-function projHTML(p){return'<h2>'+p.title+'</h2><div class="pm"><ul>'+p.meta.map(function(m){return'<li><b>'+m[0]+'</b>'+m[1]+'</li>'}).join("")+'</ul><div class="dp">'+dpar(p.desc)+'</div></div><div class="pim">'+p.imgs.map(function(s,i){return s?'<img class="pic'+(i==0?' w':'')+'" src="'+String(s).replace(/"/g,"%22")+'" alt="" decoding="async">':'<div'+(i==0?' class="w"':'')+' style="background:'+bg({img:s},i+3)+'"></div>'}).join("")+'</div>'}
+function closePanel(){if(!pjc)return;clearInterval(pjT);pjTs.forEach(clearInterval);pj.style.clipPath=rectClip(pjc);var c=pjc;pjc=null;setTimeout(function(){pj.classList.remove("on");document.body.classList.remove("lock")},700)}
+function ssHTML(imgs){return'<div class="pss">'+imgs.map(function(s,i){return'<img'+(i==0?' class="on"':'')+' src="'+String(s).replace(/"/g,"%22")+'" alt="" decoding="async">'}).join("")+'</div>'}
+function projHTML(p){var L=p.imgs.length,out=[],sh=(p.ss||[]).filter(function(s){return s.imgs.length});
+  sh.forEach(function(s){var a=parseInt(s.at,10);s._a=(s.at===""||s.at==null||isNaN(a))?L:Math.max(0,Math.min(L,a))});
+  function put(n){sh.forEach(function(s){if(s._a===n)out.push(ssHTML(s.imgs))})}
+  put(0);p.imgs.forEach(function(s,i){out.push(s?'<img class="pic'+(i==0?' w':'')+'" src="'+String(s).replace(/"/g,"%22")+'" alt="" decoding="async">':'<div'+(i==0?' class="w"':'')+' style="background:'+bg({img:s},i+3)+'"></div>');put(i+1)});
+  return'<h2>'+p.title+'</h2><div class="pm"><ul>'+p.meta.map(function(m){return'<li><b>'+m[0]+'</b>'+m[1]+'</li>'}).join("")+'</ul><div class="dp">'+dpar(p.desc)+'</div></div><div class="pim">'+out.join("")+'</div>'}
+var pjTs=[];function pshows(){pjTs.forEach(clearInterval);pjTs=[];[].forEach.call(document.querySelectorAll("#pji .pss"),function(el){var im=el.children,k=0;if(im.length<2)return;pjTs.push(setInterval(function(){im[k].classList.remove("on");k=(k+1)%im.length;im[k].classList.add("on")},2000))})}
 function dpar(x){return String(x||"").split(/\n\s*\n/).map(function(s){return"<p>"+esc(s.trim())+"</p>"}).join("")}
 function fmtC(v,p,n){v=parseFloat(v);if(isNaN(v))return"";return Math.abs(v).toFixed(4)+"° "+(v>=0?p:n)}
 function mapHTML(t){var la=fmtC(t.lat,"N","S"),lo=fmtC(t.lon,"E","W");if(!t.mapImg&&!(la&&lo))return"";
   var pin='<svg class="pin" viewBox="0 0 40 52"><path d="M20 2C10 2 3 9.6 3 19c0 12 17 31 17 31s17-19 17-31C37 9.6 30 2 20 2z" fill="#F4C430" stroke="#2B2B2D" stroke-width="2"/><circle cx="20" cy="19" r="6.5" fill="#2B2B2D"/></svg>';
   var art=t.mapImg?'<div class="mimg" style="background:url(\''+String(t.mapImg).replace(/'/g,"%27")+'\') center/cover"></div>':'<svg class="mgr" viewBox="0 0 320 240" preserveAspectRatio="xMidYMid slice"><rect width="320" height="240" fill="#1d1d1f"/><g stroke="#3b3b3e" stroke-width="1"><path d="M0 40H320M0 80H320M0 120H320M0 160H320M0 200H320M40 0V240M80 0V240M120 0V240M160 0V240M200 0V240M240 0V240M280 0V240"/></g><g fill="none" stroke="#F4C430" stroke-opacity=".35" stroke-width="2.4"><path d="M-10 190C60 170 90 120 150 128S250 70 330 40"/><path d="M-10 60C40 80 70 70 110 100"/></g><g fill="none" stroke="#6a6a6e" stroke-width="1.4"><path d="M20 240L90 150L160 120L300 160M160 120L200 0M90 150L60 0M220 240L240 140"/></g><circle cx="160" cy="120" r="54" fill="none" stroke="#F4C430" stroke-opacity=".25" stroke-dasharray="3 6"/><circle cx="160" cy="120" r="96" fill="none" stroke="#F4C430" stroke-opacity=".15" stroke-dasharray="3 8"/></svg>';
-  return'<div class="mapc"><div class="mw">'+art+'<span class="pulse"></span>'+pin+'</div><p class="sm">'+esc(t.title).toUpperCase()+(la&&lo?' · '+la+' '+lo:'')+'</p></div>'}
+  return'<div class="mapc"><div class="mw">'+art+'<span class="pulse"></span>'+pin+'</div>'+(la&&lo?'<p class="sm">'+la+' · '+lo+'</p>':'')+'</div>'}
 function tripHTML(t){var nn=t.notes.filter(Boolean);if(nn.length){CONTENT.pages.itn={photos:nn.map(function(n){var o={img:n,hd:n,cap:t.title+" itinerary",year:"",ar:.5625},im=new Image();im.onload=function(){if(im.naturalWidth)o.ar=im.naturalWidth/im.naturalHeight};im.src=n;return o})}}
   return'<div class="th"><div class="dp"><h2>'+t.title+'</h2>'+dpar(t.desc)+'</div>'+mapHTML(t)+'</div><div class="pm"><ul>'+t.meta.map(function(m){return'<li><b>'+m[0]+'</b>'+m[1]+'</li>'}).join("")+'</ul><div class="poly" id="poly">'+t.slides.map(function(s,i){return'<i'+(i==0?' class="on"':'')+' style="background:'+bg({img:s},i+5)+'"></i>'}).join("")+'<span>'+(t.polyCap||t.title+", 2026")+'</span></div></div>'
   +'<h3>The itinerary</h3><div class="notes">'+t.notes.map(function(n,i){return n?'<button class="note g real" type="button" data-p="itn" data-i="'+i+'" style="--r:'+(((i*5)%7)-3)+'deg" aria-label="Enlarge itinerary page '+(i+1)+'"><img src="'+n+'" alt="Itinerary page '+(i+1)+'" loading="lazy"></button>':'<div class="note" style="--r:'+(((i*5)%7)-3)+'deg">Itinerary screenshot</div>'}).join("")+'</div>'
@@ -203,7 +209,7 @@ function tripHTML(t){var nn=t.notes.filter(Boolean);if(nn.length){CONTENT.pages.
   +'<h3>In their words</h3><div class="rev">'+t.reviews.map(function(r){return'<blockquote>'+r.text+'<span>'+r.by+'</span></blockquote>'}).join("")+'</div>'}
 function slideshow(){var s=document.querySelectorAll("#poly i"),k=0;clearInterval(pjT);pjT=setInterval(function(){s[k].classList.remove("on");k=(k+1)%s.length;s[k].classList.add("on")},1800)}
 document.addEventListener("click",function(e){var c=e.target.closest("[data-pj]"),t=e.target.closest("[data-tr]"),tb=e.target.closest(".tabs button"),m=e.target.closest(".tg button");
-  if(c)openPanel(c,projHTML(CONTENT.design.projects[+c.dataset.pj]));else if(t)openPanel(t,tripHTML(CONTENT.trips[+t.dataset.tr]),slideshow);else if(e.target.closest("#pjx"))closePanel();
+  if(c)openPanel(c,projHTML(CONTENT.design.projects[+c.dataset.pj]),pshows);else if(t)openPanel(t,tripHTML(CONTENT.trips[+t.dataset.tr]),slideshow);else if(e.target.closest("#pjx"))closePanel();
   else if(tb){var s=$(tb.dataset.t);if(s)s.scrollIntoView({behavior:"smooth"})}
   else if(m){var v=m.closest("main");v.classList.toggle("gmode",m.dataset.m=="grid");[].forEach.call(v.querySelectorAll(".tg button"),function(b){b.classList.toggle("on",b==m)});sizeHS(v.id);v.querySelector(".tg").scrollIntoView()}});
 addEventListener("keydown",function(e){if(e.key=="Escape")closePanel()});
