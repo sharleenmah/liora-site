@@ -215,9 +215,12 @@ document.addEventListener("click",function(e){var c=e.target.closest("[data-pj]"
 addEventListener("keydown",function(e){if(e.key=="Escape")closePanel()});
 /* services page (edit this block, or let the CMS) */
 $("svc").innerHTML='<div class="ic"></div><h1>SERVICES</h1><div class="sv2" id="sv2">'+CONTENT.svc.map(function(s,i){
- return'<div class="sp'+(i==0?' on':'')+'" tabindex="0"><div class="bgi" style="background:'+bg({img:s.img},i+1)+'"></div><div class="ov"></div><span class="no sm">'+pad(i+1)+'</span><div class="vt"><span>'+s.name+'</span></div><div class="in"><span class="no sm">'+pad(i+1)+'</span><h3>'+s.name+'</h3><p>'+s.desc+'</p><a class="btn sm" href="/contact">'+s.price+' →</a></div></div>'}).join("")+'</div>'
- +'<div class="guide"><h2>'+esc(CONTENT.guide.heading)+'</h2><p>'+esc(CONTENT.guide.text)+'</p><a class="btn sm" id="gdl" href="/contact">DOWNLOAD</a></div>';
+ return'<div class="sp'+(i==0?' on':'')+'" tabindex="0"><div class="bgi" style="background:'+bg({img:s.img},i+1)+'"></div><div class="ov"></div><span class="no sm">'+pad(i+1)+'</span><div class="vt"><span>'+s.name+'</span></div><div class="in"><span class="no sm">'+pad(i+1)+'</span><h3>'+s.name+'</h3><p>'+s.desc+'</p><a class="btn sm" href="/#enquire" data-svc="'+i+'">'+s.price+' →</a></div></div>'}).join("")+'</div>'
+ +'<div class="guide"><h2>'+esc(CONTENT.guide.heading)+'</h2><p>'+esc(CONTENT.guide.text)+'</p><a class="btn sm" id="gdl" href="/#enquire">DOWNLOAD</a></div>';
 if(CONTENT.guideUrl){var gd=$("gdl");gd.href=CONTENT.guideUrl;gd.target="_blank";gd.setAttribute("download","")}
+function tc(n){return String(n||"").toLowerCase().replace(/(^|[\s\/&-])([a-z])/g,function(m,a,b){return a+b.toUpperCase()})}
+(function(){var sel=document.querySelector("#f select[name=service]");if(sel&&CONTENT.svc.length)sel.innerHTML='<option value="">Choose one</option>'+CONTENT.svc.map(function(x){return"<option>"+esc(tc(x.name))+"</option>"}).join("")+"<option>Something else</option>"})();
+document.addEventListener("click",function(e){var a=e.target.closest("[data-svc]");if(!a)return;var x=CONTENT.svc[+a.getAttribute("data-svc")],sel=document.querySelector("#f select[name=service]");if(x&&sel)sel.value=tc(x.name)},true);
 function spOn(p){[].forEach.call(document.querySelectorAll("#sv2 .sp"),function(x){x.classList.toggle("on",x==p)})}
 [].forEach.call(document.querySelectorAll("#sv2 .sp"),function(p){p.addEventListener("pointerenter",function(e){if(e.pointerType=="mouse"&&innerWidth>800)spOn(p)});p.addEventListener("click",function(){spOn(p)});p.addEventListener("focus",function(){spOn(p)})});
 /* contact page (edit this block, or let the CMS) */
