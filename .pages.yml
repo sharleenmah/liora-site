@@ -280,6 +280,28 @@ content:
           media: images
           extensions: [jpg, jpeg, png, webp]
           multiple: true
+      - name: slideshow_1
+        type: image
+        label: "Slideshow 1 – photos (3-4, changes every 2 seconds)"
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+          multiple: true
+      - name: slideshow_1_after
+        type: number
+        label: "Slideshow 1 – show after photo number"
+        description: "0 = before the first photo. Leave empty to put it at the end."
+      - name: slideshow_2
+        type: image
+        label: "Slideshow 2 – photos (3-4, changes every 2 seconds)"
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+          multiple: true
+      - name: slideshow_2_after
+        type: number
+        label: "Slideshow 2 – show after photo number"
+        description: "0 = before the first photo. Leave empty to put it at the end."
   - name: posters
     label: "Graphic design – poster wall"
     type: file

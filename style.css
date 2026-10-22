@@ -114,7 +114,8 @@ button.fr{padding:0;background:none;cursor:pointer;width:100%;font:inherit;color
 .pi{max-width:1100px;margin:0 auto;padding:5rem 5vw 10vh}.pi h2{font-size:clamp(2.4rem,6vw,5rem);margin-bottom:1.6rem;color:#fff}.pi h3{font-size:1.8rem;margin:5vh 0 1rem}
 .pm{display:grid;grid-template-columns:1fr 1.1fr;gap:4vw;align-items:center;margin-bottom:5vh}
 .pm ul{list-style:none;padding:0}.pm li{padding:.55rem 0;border-bottom:1px solid #4a4a4c}.pm b{font-weight:400;color:var(--yel);display:inline-block;min-width:6.5rem}
-.pim{display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:start}.pim .pic{display:block;width:100%;height:auto;border-radius:3px}.pim .pic.w{grid-column:1/-1}.pim div{aspect-ratio:4/3;border-radius:3px;background-size:cover}.pim .w{grid-column:1/-1;aspect-ratio:16/9}
+.pim{columns:2;column-gap:1rem}.pim>*{break-inside:avoid;margin-bottom:1rem}.pim .pic{display:block;width:100%;height:auto;border-radius:3px}.pim .pic.w,.pim div.w{column-span:all}.pim div{aspect-ratio:4/3;border-radius:3px;background-size:cover}.pim div.w{aspect-ratio:16/9}
+.pim .pss{display:grid;aspect-ratio:auto;background:none}.pss img{grid-area:1/1;width:100%;height:auto;align-self:center;border-radius:3px;opacity:0;transition:opacity .45s}.pss img.on{opacity:1}
 .poly{position:relative;width:min(320px,80%);aspect-ratio:4/5;background:#fff;padding:14px 14px 56px;box-shadow:0 18px 40px rgba(0,0,0,.5);transform:rotate(-3deg);margin:0 auto}
 .poly i{position:absolute;left:14px;right:14px;top:14px;bottom:56px;opacity:0;transition:opacity .35s;background-size:cover}.poly i.on{opacity:1}
 .poly span{position:absolute;left:0;right:0;bottom:16px;text-align:center;color:#222;font:400 .8rem "Jost"}
@@ -153,8 +154,8 @@ button.fr{padding:0;background:none;cursor:pointer;width:100%;font:inherit;color
 @media (max-width:800px){.sv2{flex-direction:column;height:auto}.sp{flex:none;height:92px;transition:height .6s}.sp.on{height:400px}.sp .vt{top:1.3rem;bottom:auto;justify-content:flex-start;padding-left:1.2rem}.sp .vt span{writing-mode:horizontal-tb;transform:none}.sp>.no{display:none}.sp .in{width:100%}}
 .tri .lead{font:500 clamp(1.5rem,2.8vw,2.3rem)/1.2 "Bodoni Moda",serif;margin-bottom:1.4rem}.tri .tag2{font:500 clamp(1.3rem,2.4vw,2rem)/1.25 "Bodoni Moda",serif;color:var(--yel);margin-top:1.8rem}
 .ch{text-align:center;max-width:62ch;margin:0 auto}.ch p{margin-bottom:2rem}
-.em{display:flex;flex-direction:column;gap:1rem;justify-content:center;align-items:center;text-align:center}.em a.big{max-width:100%;overflow-wrap:anywhere}
-.em a.big{font:500 clamp(1.5rem,4vw,3.1rem)/1.1 "Bodoni Moda",serif;color:#fff;border-bottom:1px solid var(--yel);transition:color .3s}.em a.big:hover{color:var(--yel)}
+.em{display:flex;flex-direction:column;gap:1rem;justify-content:center;align-items:center;text-align:center;position:relative;left:50%;transform:translateX(-50%);width:max-content;max-width:94vw}.em a.big{white-space:nowrap}
+.em a.big{font:500 clamp(1.05rem,4.6vw,3.1rem)/1.1 "Bodoni Moda",serif;color:#fff;border-bottom:1px solid var(--yel);transition:color .3s}.em a.big:hover{color:var(--yel)}
 .em button{background:none;border:1px solid var(--yel);color:var(--yel);padding:.6rem 1.1rem;font:inherit;letter-spacing:.2em;cursor:pointer;transition:background .3s,color .3s}.em button:hover{background:var(--yel);color:var(--char)}
 .lk{display:flex;gap:2rem;justify-content:center;margin:2.4rem 0 0;flex-wrap:wrap}
 .lk a{position:relative;padding-bottom:4px}.lk a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--yel);transition:right .35s}.lk a:hover::after{right:0}
