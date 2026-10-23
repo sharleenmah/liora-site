@@ -129,7 +129,10 @@
   },
   {
     "img": "/media/images/img4839-2-1-1.jpg",
-    "hd": "/media/images/img5254-3.jpg",
+    "featured": false
+  },
+  {
+    "img": "/media/images/img5254-3-1.jpg",
     "featured": false
   },
   {
@@ -138,6 +141,58 @@
   },
   {
     "img": "/media/images/67.jpeg",
+    "featured": false
+  },
+  {
+    "img": "/media/images/img6861-5.jpg",
+    "featured": false
+  },
+  {
+    "img": "/media/images/img6799.jpg",
+    "featured": false
+  },
+  {
+    "img": "/media/images/72.jpg",
+    "featured": false
+  },
+  {
+    "img": "/media/images/1-img4556.jpg",
+    "featured": false
+  },
+  {
+    "img": "/media/images/img6272-1-1.jpg",
+    "featured": false
+  },
+  {
+    "img": "/media/images/img9618.jpg",
+    "featured": false
+  },
+  {
+    "img": "/media/images/3-img2533.jpg",
+    "featured": false
+  },
+  {
+    "img": "/media/images/img7038-3.jpg",
+    "featured": false
+  },
+  {
+    "img": "/media/images/img8104-3-1.jpg",
+    "featured": false
+  },
+  {
+    "img": "/media/images/63.jpeg",
+    "featured": false
+  },
+  {
+    "img": "/media/images/img4447.jpg",
+    "featured": false
+  },
+  {
+    "img": "/media/images/img1755.jpg",
+    "featured": false
+  },
+  {
+    "img": "/media/images/65.jpeg",
     "featured": false
   }
 ]
