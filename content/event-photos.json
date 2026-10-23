@@ -1,42 +1,118 @@
 [
   {
     "img": "/media/images/img6987-2.jpg",
+    "featured": false,
     "year": "2025"
   },
   {
     "img": "/media/images/img3723-2-1-1.jpg",
+    "featured": false,
     "year": "2025"
   },
   {
     "img": "/media/images/img4740-3-1-1.jpg",
+    "featured": false,
     "year": "2025"
   },
   {
     "img": "/media/images/img8225-6.jpg",
+    "featured": false,
     "year": "2023"
   },
   {
     "img": "/media/images/img6549-2-1-1-1.jpg",
+    "featured": false,
     "year": "2026"
   },
   {
     "img": "/media/images/3-img2245original-1.jpg",
+    "featured": false,
     "year": "2024"
   },
   {
     "img": "/media/images/img6218-2-2-1.jpg",
+    "featured": false,
     "year": "2025"
   },
   {
     "img": "/media/images/img6235.jpeg",
+    "featured": false,
     "year": "2026"
   },
   {
     "img": "/media/images/img6235-1.jpeg",
+    "featured": false,
     "year": "2026"
   },
   {
     "img": "/media/images/80.jpeg",
+    "featured": true,
     "year": "2026"
+  },
+  {
+    "img": "/media/images/img6867-2.jpg",
+    "featured": false,
+    "year": "2025"
+  },
+  {
+    "img": "/media/images/69.jpeg",
+    "featured": false,
+    "year": "2025"
+  },
+  {
+    "img": "/media/images/5-img8021-1.jpg",
+    "featured": false,
+    "year": "2025"
+  },
+  {
+    "img": "/media/images/img4904-2-1-1.jpg",
+    "featured": false,
+    "year": "2025"
+  },
+  {
+    "img": "/media/images/3-img4799.jpg",
+    "featured": false,
+    "year": "2024"
+  },
+  {
+    "img": "/media/images/img5759-4.jpg",
+    "featured": false,
+    "year": "2025"
+  },
+  {
+    "img": "/media/images/img6623-1-1.jpg",
+    "featured": false
+  },
+  {
+    "img": "/media/images/70.jpeg",
+    "featured": false
+  },
+  {
+    "img": "/media/images/img1907-2-1.jpg",
+    "featured": false
+  },
+  {
+    "img": "/media/images/71.jpeg",
+    "featured": false
+  },
+  {
+    "img": "/media/images/img4899-2-1-1.jpg",
+    "featured": false
+  },
+  {
+    "img": "/media/images/13-img1327.jpg",
+    "featured": false
+  },
+  {
+    "img": "/media/images/48.jpeg",
+    "featured": false
+  },
+  {
+    "img": "/media/images/img9967.jpg",
+    "featured": false
+  },
+  {
+    "img": "/media/images/75.jpeg",
+    "featured": false
   }
 ]
