@@ -214,6 +214,10 @@ content:
         options:
           media: images
           extensions: [jpg, jpeg, png, webp]
+      - name: featured
+        type: boolean
+        label: "Show slightly larger (optional)"
+        description: "Tick for your favourite shots. They show a touch bigger than the others in the grid."
       - name: caption
         type: string
         label: "Caption (used for screen readers)"
@@ -241,6 +245,10 @@ content:
         options:
           media: images
           extensions: [jpg, jpeg, png, webp]
+      - name: featured
+        type: boolean
+        label: "Show slightly larger (optional)"
+        description: "Tick for your favourite shots. They show a touch bigger than the others in the grid."
       - name: caption
         type: string
         label: "Caption (used for screen readers)"
@@ -379,6 +387,10 @@ content:
         options:
           media: images
           extensions: [jpg, jpeg, png, webp]
+      - name: featured
+        type: boolean
+        label: "Show slightly larger (optional)"
+        description: "Tick for your favourite shots. They show a touch bigger than the others in the grid."
       - name: caption
         type: string
         label: "Caption (used for screen readers)"
