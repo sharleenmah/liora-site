@@ -60,9 +60,26 @@
   {
     "title": "Kingdom Pushh Gala Magazine ",
     "subtitle": "Printed Material Design",
-    "img": "/media/images/kingdom-pushh-gala-2025-015-1.jpg",
+    "img": "/media/images/kpg-242.jpg",
     "desc": "The Kingdom Pushh Gala is an annual event celebrating those who serve, shine, and shift culture while staying rooted in their faith. Through storytelling, worship, recognition, and fellowship, it is more than a night of celebration: it is a prophetic call to purpose, unity, and legacy. As the first gala in the series, it needed a printed piece that did justice to that vision.\n\nI designed the event magazine entirely from scratch, working directly with the founders. With a tight turnaround, and with the added responsibility of consolidating and properly representing a brand identity that was just taking shape, there was no room for anything less than perfect. Every spread had to feel unmistakably authentic to the brand, celebrating excellence and impact in faith-based communities throughout. \n\nThe magazine guides guests through the night: the order of events, the honourees being celebrated, and profiles of each judge and special guest, so everyone knew who was in the room and what was happening. I also designed bespoke ad spreads for the event’s sponsors, giving each one a place in the story without losing the cohesion of the whole publication.",
     "details": "ROLE: Designer & Curator\nTIMELINE: October - November 2025\nTOOLS: InDesign, Photoshop, Canva\nPIECES: Magazine design, advertisement design",
+    "images": [
+      "/media/images/kpg-mag-banner.jpeg",
+      "/media/images/kpg-244-1.jpg",
+      "/media/images/kpg-243.jpg",
+      "/media/images/kpg-167.jpg",
+      "/media/images/kpg-245.jpg",
+      "/media/images/kingdom-pushh-gala-2025-002-1.jpg",
+      "/media/images/kingdom-pushh-gala-2025-011-1.jpg",
+      "/media/images/kpg-241.jpg"
+    ],
+    "slideshow_1": [
+      "/media/images/22.jpg",
+      "/media/images/11-1.jpg",
+      "/media/images/kpg-magazine-re-design-3.jpg",
+      "/media/images/kpg-magazine-re-design-2.jpg"
+    ],
+    "slideshow_1_after": 5,
     "slideshow_2_after": 0
   }
 ]
