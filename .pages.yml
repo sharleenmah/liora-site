@@ -282,7 +282,7 @@ content:
           multiple: true
       - name: slideshow_1
         type: image
-        label: "Slideshow 1 – photos (3-4, changes every 2 seconds)"
+        label: "Slideshow 1 (optional) – photos (3-4, changes every 2 seconds)"
         options:
           media: images
           extensions: [jpg, jpeg, png, webp]
@@ -293,7 +293,7 @@ content:
         description: "0 = before the first photo. Leave empty to put it at the end."
       - name: slideshow_2
         type: image
-        label: "Slideshow 2 – photos (3-4, changes every 2 seconds)"
+        label: "Slideshow 2 (optional) – photos (3-4, changes every 2 seconds)"
         options:
           media: images
           extensions: [jpg, jpeg, png, webp]
@@ -301,6 +301,28 @@ content:
       - name: slideshow_2_after
         type: number
         label: "Slideshow 2 – show after photo number"
+        description: "0 = before the first photo. Leave empty to put it at the end."
+      - name: slideshow_3
+        type: image
+        label: "Slideshow 3 (optional) – photos (3-4, changes every 2 seconds)"
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+          multiple: true
+      - name: slideshow_3_after
+        type: number
+        label: "Slideshow 3 – show after photo number"
+        description: "0 = before the first photo. Leave empty to put it at the end."
+      - name: slideshow_4
+        type: image
+        label: "Slideshow 4 (optional) – photos (3-4, changes every 2 seconds)"
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+          multiple: true
+      - name: slideshow_4_after
+        type: number
+        label: "Slideshow 4 – show after photo number"
         description: "0 = before the first photo. Leave empty to put it at the end."
   - name: posters
     label: "Graphic design – poster wall"
