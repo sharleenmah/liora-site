@@ -14,12 +14,15 @@
       "/media/images/wedding-stationary-suite.jpg",
       "/media/images/hotel-caruso-flowers-and-lemons-decors.webp",
       "/media/images/wedding-copy-1.webp",
-      "/media/images/slide-8.jpg",
       "/media/images/slide-9-1.jpg",
       "/media/images/ravello-hotel-caruso-infinity-pool-seaview-1-2.webp",
       "/media/images/4a70be62cdcfd3407763be31a987d14a.jpg",
       "/media/images/coaster-mockup.jpg",
-      "/media/images/slide-idk.jpg"
+      "/media/images/slide-idk.jpg",
+      "/media/images/menu-2.png",
+      "/media/images/slide-12.jpg",
+      "/media/images/slide-14.jpeg",
+      "/media/images/wine-label-flat-desig.png"
     ],
     "slideshow_1": [
       "/media/images/hand-fan-mockup.jpg",
@@ -34,7 +37,21 @@
       "/media/images/wine-bottle-mockup-2.jpg",
       "/media/images/669c7a3808d5a52e6b54113dad74e3c4.webp"
     ],
-    "slideshow_2_after": 13
+    "slideshow_2_after": 17,
+    "slideshow_3": [
+      "/media/images/ffcddeb28bd1cac1cb899c72e6d72f9b-copy.jpg",
+      "/media/images/1432bab2ddaf078c7d3e9c7338150b69.jpg",
+      "/media/images/geminigeneratedimagehegq1chegq1chegq-1.jpg",
+      "/media/images/geminigeneratedimage97cmiw97cmiw97cm-1.jpg"
+    ],
+    "slideshow_3_after": 8,
+    "slideshow_4": [
+      "/media/images/name-cards.jpg",
+      "/media/images/geminigeneratedimage52tx2952tx2952tx.jpg",
+      "/media/images/geminigeneratedimage94ppog94ppog94pp-1.jpg",
+      "/media/images/geminigeneratedimagerjwy9erjwy9erjwy.jpg"
+    ],
+    "slideshow_4_after": 13
   },
   {
     "title": "Kingdom Pushh Gala Magazine ",
