@@ -1,158 +1,197 @@
 [
   {
     "img": "/media/images/img6044.jpg",
+    "featured": false,
     "year": "2024"
   },
   {
     "img": "/media/images/img7333-3-1.jpg",
+    "featured": true,
     "year": "2025"
   },
   {
     "img": "/media/images/1-img0695-1.jpg",
+    "featured": false,
     "year": "2026"
   },
   {
     "img": "/media/images/untitled-1-21-10-2026-22-22-20.jpg",
+    "featured": true,
     "year": "2026"
   },
   {
     "img": "/media/images/516657369064036582ba5o-3.jpg",
+    "featured": false,
     "year": "2021"
   },
   {
     "img": "/media/images/img5217-1-1.jpg",
+    "featured": false,
     "year": "2026"
   },
   {
     "img": "/media/images/img0608-1.jpg",
+    "featured": true,
     "year": "2026"
   },
   {
     "img": "/media/images/8-img6985-1-1.jpg",
+    "featured": false,
     "year": "2026"
   },
   {
     "img": "/media/images/untitled-1-21-10-2026-22-22-20-1.jpg",
+    "featured": false,
     "year": "2026"
   },
   {
     "img": "/media/images/raw-photo-4-1.jpg",
+    "featured": false,
     "year": "2025"
   },
   {
     "img": "/media/images/img5279-1-1.jpg",
+    "featured": true,
     "year": "2026"
   },
   {
     "img": "/media/images/img3948-2-1.jpg",
+    "featured": false,
     "year": "2023"
   },
   {
     "img": "/media/images/36.jpeg",
+    "featured": false,
     "year": "2026"
   },
   {
     "img": "/media/images/4-img2558original-1-1.jpg",
+    "featured": false,
     "year": "2026"
   },
   {
     "img": "/media/images/nwdnfiletemp1629428703493original-3-1.jpg",
+    "featured": false,
     "year": "2021"
   },
   {
     "img": "/media/images/34.jpeg",
+    "featured": true,
     "year": "2026"
   },
   {
     "img": "/media/images/img7192-2-2.jpg",
+    "featured": false,
     "year": "2024"
   },
   {
     "img": "/media/images/51440593118651399ddc3o-2.jpg",
+    "featured": true,
     "year": "2021"
   },
   {
     "img": "/media/images/7-img6985-1-1.jpg",
+    "featured": false,
     "year": "2026"
   },
   {
     "img": "/media/images/img3754-2-1.jpg",
+    "featured": false,
     "year": "2023"
   },
   {
     "img": "/media/images/img7385-2-1.jpg",
+    "featured": false,
     "year": "2025"
   },
   {
     "img": "/media/images/img5655.jpg",
+    "featured": false,
     "year": "2024"
   },
   {
     "img": "/media/images/nwdnfiletemp1619001131937-1.jpg",
+    "featured": false,
     "year": "2021"
   },
   {
     "img": "/media/images/uncle-ghetts-3-1.jpg",
+    "featured": true,
     "year": "2025"
   },
   {
     "img": "/media/images/img3635-2-1.jpg",
+    "featured": false,
     "year": "2023"
   },
   {
     "img": "/media/images/img5627-1.jpg",
+    "featured": false,
     "year": "2024"
   },
   {
     "img": "/media/images/img6587-2-1.jpg",
+    "featured": false,
     "year": "2025"
   },
   {
     "img": "/media/images/62.jpeg",
+    "featured": false,
     "year": "2026"
   },
   {
     "img": "/media/images/img5134-1-1.jpg",
+    "featured": false,
     "year": "2026"
   },
   {
     "img": "/media/images/img7267-1-1.jpg",
+    "featured": false,
     "year": "2025"
   },
   {
     "img": "/media/images/38.jpeg",
+    "featured": false,
     "year": "2026"
   },
   {
     "img": "/media/images/9-img0587-blur-1-1.jpg",
+    "featured": false,
     "year": "2026"
   },
   {
     "img": "/media/images/nwdnfiletemp1610764383113-1-1.jpg",
+    "featured": false,
     "year": "2020"
   },
   {
     "img": "/media/images/6-img6985-1-1.jpg",
+    "featured": false,
     "year": "2026"
   },
   {
     "img": "/media/images/img5958-1-2jpg-1.jpg",
+    "featured": false,
     "year": "2024"
   },
   {
     "img": "/media/images/img6572-1-1.jpg",
+    "featured": false,
     "year": "2025"
   },
   {
     "img": "/media/images/86.jpeg",
+    "featured": false,
     "year": "2026"
   },
   {
     "img": "/media/images/51665735721c790b14a3co-3-1.jpg",
+    "featured": false,
     "year": "2019"
   },
   {
     "img": "/media/images/61.jpeg",
+    "featured": false,
     "year": "2026"
   }
 ]
