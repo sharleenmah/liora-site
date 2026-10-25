@@ -1,12 +1,12 @@
 [
   {
     "img": "/media/images/img6987-2.jpg",
-    "featured": false,
+    "featured": true,
     "year": "2025"
   },
   {
     "img": "/media/images/img3723-2-1-1.jpg",
-    "featured": false,
+    "featured": true,
     "year": "2025"
   },
   {
@@ -121,12 +121,12 @@
   },
   {
     "img": "/media/images/75.jpeg",
-    "featured": false,
+    "featured": true,
     "year": "2026"
   },
   {
     "img": "/media/images/img6942-2.jpg",
-    "featured": false,
+    "featured": true,
     "year": "2025"
   },
   {
@@ -196,7 +196,7 @@
   },
   {
     "img": "/media/images/img7038-3.jpg",
-    "featured": false,
+    "featured": true,
     "year": "2025"
   },
   {
@@ -271,7 +271,7 @@
   },
   {
     "img": "/media/images/img4875-3-1-1-1.jpg",
-    "featured": false,
+    "featured": true,
     "year": "2025"
   },
   {
