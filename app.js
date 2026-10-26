@@ -63,7 +63,7 @@ function bg(o,i){return o.img?"url('"+String(o.img).replace(/'/g,"%27")+"') cent
 function $(i){return document.getElementById(i)}
 /* random photos on every load */
 var pool=CONTENT.photos.map(function(p,i){return{p:p,i:i}}).sort(function(){return Math.random()-.5});
-document.querySelectorAll(".it").forEach(function(t,k){var o=pool[k%pool.length];t.style.background=bg(o.p,o.i);t.dataset.k=k%pool.length});
+document.querySelectorAll(".it").forEach(function(t,k){var o=pool[k%pool.length];t.style.background=bg(o.p,o.i);t.dataset.k=k%pool.length;if(innerWidth<=800){var w=Math.min(parseFloat(t.style.width)*2.4,40),l=parseFloat(t.style.left);t.style.width=w+"vw";t.style.left=Math.max(3,Math.min(l,97-w))+"%"}});
 /* keep each photo's true shape (no cropping) */
 pool.forEach(function(o,k){if(!o.p.img)return;var im=new Image();im.onload=function(){if(!im.naturalHeight)return;o.r=im.naturalWidth/im.naturalHeight;document.querySelectorAll('.it[data-k="'+k+'"]').forEach(function(t){t.style.aspectRatio=o.r})};im.src=o.p.img});
 if(CONTENT.portrait.img){var meF=$("me").parentNode;meF.classList.add("real");meF.innerHTML=pic(CONTENT.portrait.img,"Sharleen Mahembe")}
@@ -129,15 +129,15 @@ function fly(){
   im.style.left=r.left+"px";im.style.top=r.top+"px";im.style.width=r.width+"px";
   setTimeout(function(){hl.style.visibility="visible";$("intro").remove();document.body.classList.remove("lock");document.body.classList.add("go")},1200)}
 /* black-and-white cursor reveal */
-var rv=$("rv"),lx=-999,ly=-999,lastP=0,vis=false;
-function spawn(x,y){var o=pool[Math.floor(Math.random()*pool.length)],w=110+Math.random()*150,r=o.r||[.75,.8,1,1.33][Math.floor(Math.random()*4)],d=document.createElement("div");
+var TOUCH=matchMedia("(hover:none)").matches,rv=$("rv"),lx=-999,ly=-999,lastP=0,vis=false;
+function spawn(x,y){var o=pool[Math.floor(Math.random()*pool.length)],w=TOUCH?68+Math.random()*62:110+Math.random()*150,r=o.r||[.75,.8,1,1.33][Math.floor(Math.random()*4)],d=document.createElement("div");
   d.className="rp";d.style.cssText="width:"+w+"px;height:"+w/r+"px;left:"+(x-w/2)+"px;top:"+(y-w/r/2)+"px;background:"+bg(o.p,o.i);
   rv.appendChild(d);requestAnimationFrame(function(){requestAnimationFrame(function(){d.classList.add("on")})});
-  setTimeout(function(){d.classList.add("off")},1700);setTimeout(function(){d.remove()},2400)}
+  setTimeout(function(){d.classList.add("off")},TOUCH?1500:1700);setTimeout(function(){d.remove()},TOUCH?2100:2400)}
 rv.addEventListener("pointermove",function(e){var b=rv.getBoundingClientRect(),x=e.clientX-b.left,y=e.clientY-b.top;lastP=Date.now();
   if(Math.hypot(x-lx,y-ly)>110){lx=x;ly=y;spawn(x,y)}});
-new IntersectionObserver(function(e){vis=e[0].isIntersecting}).observe(rv);
-setInterval(function(){if(vis&&Date.now()-lastP>2000){var b=rv.getBoundingClientRect();spawn(b.width*(.15+Math.random()*.7),b.height*(.2+Math.random()*.6))}},1000);
+new IntersectionObserver(function(e){vis=e[0].isIntersecting;if(vis&&TOUCH)for(var k=0;k<5;k++)setTimeout(function(){var b=rv.getBoundingClientRect();spawn(b.width*(.12+Math.random()*.76),b.height*(.2+Math.random()*.6))},k*140)}).observe(rv);
+setInterval(function(){if(vis&&(TOUCH||Date.now()-lastP>2000)){var b=rv.getBoundingClientRect();spawn(b.width*(TOUCH?.12+Math.random()*.76:.15+Math.random()*.7),b.height*(.2+Math.random()*.6))}},TOUCH?300:1000);
 /* portrait and event pages (edit this block, or let the CMS) */
 var AR=[.75,.8,1,.67,.8,.75,1.33,.8,.75],HH=[68,62,72,64,70,63,60,72,66],MT=[0,-7,5,-4,8,-6,4,-8,3],io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});
 function pad(n){return(n<10?"0":"")+n}
@@ -224,15 +224,15 @@ function tc(n){return String(n||"").toLowerCase().replace(/(^|[\s\/&-])([a-z])/g
 (function(){var sel=document.querySelector("#f select[name=service]");if(sel&&CONTENT.svc.length)sel.innerHTML='<option value="">Choose one</option>'+CONTENT.svc.map(function(x){return"<option>"+esc(tc(x.name))+"</option>"}).join("")+"<option>Something else</option>"})();
 document.addEventListener("click",function(e){var a=e.target.closest("[data-svc]");if(!a)return;var x=CONTENT.svc[+a.getAttribute("data-svc")],sel=document.querySelector("#f select[name=service]");if(x&&sel)sel.value=tc(x.name)},true);
 function spOn(p){[].forEach.call(document.querySelectorAll("#sv2 .sp"),function(x){x.classList.toggle("on",x==p)})}
-[].forEach.call(document.querySelectorAll("#sv2 .sp"),function(p){p.addEventListener("pointerenter",function(e){if(e.pointerType=="mouse"&&innerWidth>800)spOn(p)});p.addEventListener("click",function(){spOn(p)});p.addEventListener("focus",function(){spOn(p)})});
+[].forEach.call(document.querySelectorAll("#sv2 .sp"),function(p){p.addEventListener("pointerenter",function(e){if(e.pointerType=="mouse"&&innerWidth>800)spOn(p)});p.addEventListener("click",function(){spOn(p);if(innerWidth<=800)setTimeout(function(){p.scrollIntoView({block:"nearest",behavior:"smooth"})},80)});p.addEventListener("focus",function(){spOn(p)})});
 /* contact page (edit this block, or let the CMS) */
 var CC=CONTENT.contact,EM=CC.email;
 function tileHTML(p,i,ar){var inner="";
  if(p.type=="video"&&p.src)inner='<video src="'+p.src+'" autoplay muted loop playsinline></video>';
  else if(p.type=="carousel")inner='<div class="car">'+p.src.map(function(o,k){return o.vid?'<div class="cv"><video src="'+o.s+'" autoplay muted loop playsinline></video></div>':'<div style="background:'+bg({img:o.s},i+k+2)+'"></div>'}).join("")+'</div><div class="dots">'+p.src.map(function(s,k){return'<i'+(k==0?' class="on"':'')+'></i>'}).join("")+'</div>';
  else inner='<div style="position:absolute;inset:0;background:'+bg({img:p.src},i+9)+'"></div>';
- return'<div class="fr tile" style="aspect-ratio:'+ar+'"><div class="ph">'+inner+'</div><span class="tp sm">'+(p.type=="video"?"▶ VIDEO":p.type=="carousel"?"SWIPE →":"POST")+'</span>'+(p.href?'<a class="go" href="'+p.href+'" target="_blank" rel="noopener" aria-label="Open post">↗</a>':"")+'</div>'}
-function soc(name,url,posts,ar){return'<section class="so"><header><h2>'+name+'</h2>'+(url?'<a class="sm" href="'+url+'" target="_blank" rel="noopener">VISIT PAGE ↗</a>':"")+'</header><div class="tl">'+posts.map(function(p,i){return tileHTML(p,i,ar)}).join("")+'</div></section>'}
+ return'<div class="fr tile" style="aspect-ratio:'+ar+'"><div class="ph">'+inner+'</div><span class="tp sm">'+(p.type=="video"?"▶\uFE0E VIDEO":p.type=="carousel"?"SWIPE →":"POST")+'</span>'+(p.href?'<a class="go" href="'+p.href+'" target="_blank" rel="noopener" aria-label="Open post">↗\uFE0E</a>':"")+'</div>'}
+function soc(name,url,posts,ar){return'<section class="so"><header><h2>'+name+'</h2>'+(url?'<a class="sm" href="'+url+'" target="_blank" rel="noopener">VISIT PAGE ↗\uFE0E</a>':"")+'</header><div class="tl">'+posts.map(function(p,i){return tileHTML(p,i,ar)}).join("")+'</div></section>'}
 $("ct").innerHTML='<div class="ic"></div><h1>CONTACT ME</h1><div class="ch"><p>Tell me a little about what you’re dreaming up and let’s start creating something beautiful together.</p><div class="em"><a class="big" id="eml" href="#">…</a><button class="sm" id="cpy" type="button">COPY</button></div><div class="lk sm"><a href="'+(CC.linkedin||"#")+'" target="_blank" rel="noopener">LINKEDIN ↗</a><a href="'+(CC.instagram||"#")+'" target="_blank" rel="noopener">INSTAGRAM ↗</a><a href="'+(CC.tiktok||"#")+'" target="_blank" rel="noopener">TIKTOK ↗</a></div><p style="margin:2.4rem 0 0" class="sm"><a href="/#enquire" style="color:var(--yel);border-bottom:1px solid var(--yel)">PREFER A FORM? SEND AN ENQUIRY</a></p></div>'
  +soc("Instagram",CC.instagram,CC.instagramPosts,"4/5")+soc("TikTok",CC.tiktok,CC.tiktokPosts,"9/16");
 $("eml").textContent=EM;$("eml").href="mailto:"+EM;
@@ -285,3 +285,10 @@ function layG(v){var h=v&&v.querySelector(".hst");if(!h||!v.classList.contains("
  if(row.length)close(row,true)}
 addEventListener("resize",function(){["ptr","evt"].forEach(function(id){layG(document.getElementById(id))})});
 document.addEventListener("load",function(e){var t=e.target;if(t.tagName=="IMG"&&t.closest&&t.closest("button.g")){var v=t.closest("main");clearTimeout(v._lt);v._lt=setTimeout(function(){layG(v)},60)}},true);
+
+/* phone menu */
+(function(){var h=document.querySelector("header"),b=h&&h.querySelector(".mb");if(!b)return;
+ function set(o){h.classList.toggle("open",o);b.setAttribute("aria-expanded",o)}
+ b.addEventListener("click",function(){set(!h.classList.contains("open"))});
+ h.addEventListener("click",function(e){if(e.target.closest("nav a"))set(false)});
+ addEventListener("popstate",function(){set(false)})})();

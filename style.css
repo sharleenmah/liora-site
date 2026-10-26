@@ -250,3 +250,41 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--yel);outline-offset
 @media(max-width:640px){#pz{padding:4rem 1rem}#pzp,#pzn{top:auto;bottom:1rem}}
 
 .car .cv{position:relative;background:#000}.car .cv video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* phones only (desktop is unchanged) */
+.mb{display:none}
+@media (max-width:800px){
+ body>header{padding:.7rem 5vw;flex-wrap:wrap}
+ #hl{width:64px}
+ .mb{display:flex;flex-direction:column;justify-content:center;gap:5px;width:2.6rem;height:2.6rem;margin-left:auto;background:none;border:1px solid var(--yel);border-radius:50%;padding:0 .75rem;cursor:pointer}
+ .mb i{display:block;height:1.5px;background:var(--yel);transition:transform .3s,opacity .3s}
+ body>header.open .mb i:nth-child(1){transform:translateY(6.5px) rotate(45deg)}body>header.open .mb i:nth-child(2){opacity:0}body>header.open .mb i:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+ body>header nav{display:none;flex-basis:100%;flex-direction:column;gap:0;padding:.4rem 0 .2rem;margin-top:.5rem;border-top:1px solid #4a4a4c}
+ body>header.open nav{display:flex}
+ body>header nav a{padding:.85rem 0;border-bottom:1px solid #3a3a3c}header nav a:last-child{border-bottom:0}
+ body>header nav a::after{display:none}
+ .pad{padding:7vh 5vw}
+ /* home hero: button under the photo */
+ .hero{display:flex;flex-direction:column;gap:1.4rem;padding:3vh 5vw 5vh}
+ .hero>div:first-child{display:contents}
+ .hero .hi{order:1;margin:0}.hero h1{order:2;margin-bottom:0}.hero .founder{order:3}
+ .hero .photo{order:4;flex:none;width:100%}.hero .btn{order:5;align-self:flex-start;margin-top:.2rem}
+ /* smaller review cards */
+ .slides{height:250px;margin-top:1.6rem;max-width:88vw}
+ .slides figure{padding:1.2rem 1.2rem 1rem}
+ .slides figure::before{font-size:4.2rem;top:.3rem;left:1.1rem}
+ .slides blockquote{font-size:1rem;line-height:1.28;margin-top:2.4rem}
+ .slides span{font-size:.62rem}
+ /* trips: no map */
+ .mapc,.th .mapc{display:none}
+ /* services panels: open one shows its text in flow */
+ .sp.on{height:auto;min-height:340px;display:flex;align-items:flex-end}
+ .sp .in{position:relative;width:100%}
+ /* portrait / event strip: each photo fits the screen */
+ main:not(.gmode) .hst .fr{height:auto!important;margin-top:0!important}
+ main:not(.gmode) .hst .fr.real>.pic{height:auto;width:auto;max-width:84vw;max-height:70vh;object-fit:contain}
+ main:not(.gmode) .hst .fr:not(.real){width:72vw}
+ /* instagram: two across, bigger */
+ .so:first-of-type .tl{grid-template-columns:repeat(2,1fr)}
+ .so:first-of-type .tl>.tile:last-child:nth-child(odd){grid-column:1/-1;width:calc(50% - .5rem);justify-self:center}
+}
