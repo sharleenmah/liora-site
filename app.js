@@ -9,7 +9,7 @@ function paras(t){return String(t||"").split(/\n\s*\n/).map(function(x){return x
 function meta(t){return String(t||"").split("\n").map(function(l){var i=l.indexOf(":");return i<0?null:[l.slice(0,i).trim(),l.slice(i+1).trim()]}).filter(Boolean)}
 function mkph(label,n){var a=[];for(var i=1;i<=n;i++)a.push({img:"",hd:"",caption:label+" "+i,year:""});return a}
 function pho(list,label,n){return A(list,mkph(label,n)).map(function(p,i){return{img:p.img||"",hd:p.hd||"",cap:p.caption||label+" "+(i+1),year:p.year||"",feat:p.featured===true||p.featured==="true"}})}
-function post(p){var t=p.type||"image",im=Array.isArray(p.images)?p.images:[];return t=="video"?{type:"video",src:p.video||"",href:p.link||""}:t=="carousel"?{type:"carousel",src:im.length?im:E(3),href:p.link||""}:{type:"image",src:im[0]||"",href:p.link||""}}
+function post(p){var t=p.type||"image",im=Array.isArray(p.images)?p.images:[];if(t=="carousel"){var sl=im.length?im.map(function(s){return{s:s}}):E(3).map(function(s){return{s:s}});[1,2,3].map(function(n){return{v:p["video_"+n],at:parseInt(p["video_"+n+"_at"],10)}}).filter(function(x){return x.v}).sort(function(a,b){return(isNaN(a.at)?1e9:a.at)-(isNaN(b.at)?1e9:b.at)}).forEach(function(x){var k=isNaN(x.at)?sl.length:Math.max(0,Math.min(sl.length,x.at-1));sl.splice(k,0,{s:x.v,vid:1})});return{type:"carousel",src:sl,href:p.link||""}}return t=="video"?{type:"video",src:p.video||"",href:p.link||""}:{type:"image",src:im[0]||"",href:p.link||""}}
 function parseTerms(t){var secs=[],cur=null,para=[],ul=null;
   function ensure(){if(!cur){cur={t:"",b:[]};secs.push(cur)}}
   function flush(){if(para.length){ensure();cur.b.push(["p",para.join(" ")]);para=[]}if(ul){ensure();cur.b.push(["u",ul]);ul=null}}
@@ -227,7 +227,7 @@ function spOn(p){[].forEach.call(document.querySelectorAll("#sv2 .sp"),function(
 var CC=CONTENT.contact,EM=CC.email;
 function tileHTML(p,i,ar){var inner="";
  if(p.type=="video"&&p.src)inner='<video src="'+p.src+'" autoplay muted loop playsinline></video>';
- else if(p.type=="carousel")inner='<div class="car">'+p.src.map(function(s,k){return'<div style="background:'+bg({img:s},i+k+2)+'"></div>'}).join("")+'</div><div class="dots">'+p.src.map(function(s,k){return'<i'+(k==0?' class="on"':'')+'></i>'}).join("")+'</div>';
+ else if(p.type=="carousel")inner='<div class="car">'+p.src.map(function(o,k){return o.vid?'<div class="cv"><video src="'+o.s+'" autoplay muted loop playsinline></video></div>':'<div style="background:'+bg({img:o.s},i+k+2)+'"></div>'}).join("")+'</div><div class="dots">'+p.src.map(function(s,k){return'<i'+(k==0?' class="on"':'')+'></i>'}).join("")+'</div>';
  else inner='<div style="position:absolute;inset:0;background:'+bg({img:p.src},i+9)+'"></div>';
  return'<div class="fr tile" style="aspect-ratio:'+ar+'"><div class="ph">'+inner+'</div><span class="tp sm">'+(p.type=="video"?"▶ VIDEO":p.type=="carousel"?"SWIPE →":"POST")+'</span>'+(p.href?'<a class="go" href="'+p.href+'" target="_blank" rel="noopener" aria-label="Open post">↗</a>':"")+'</div>'}
 function soc(name,url,posts,ar){return'<section class="so"><header><h2>'+name+'</h2>'+(url?'<a class="sm" href="'+url+'" target="_blank" rel="noopener">VISIT PAGE ↗</a>':"")+'</header><div class="tl">'+posts.map(function(p,i){return tileHTML(p,i,ar)}).join("")+'</div></section>'}

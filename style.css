@@ -248,3 +248,5 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--yel);outline-offset
 #pz button:hover{background:var(--yel);color:var(--char)}
 #pzx{top:1.2rem;right:1.2rem}#pzp{left:1rem}#pzn{right:1rem}
 @media(max-width:640px){#pz{padding:4rem 1rem}#pzp,#pzn{top:auto;bottom:1rem}}
+
+.car .cv{position:relative;background:#000}.car .cv video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}

@@ -536,6 +536,39 @@ content:
         options:
           media: files
           extensions: [mp4, mov, webm]
+      - name: video_1
+        type: file
+        label: "Carousel video 1 (optional)"
+        description: "Add a video into a carousel post."
+        options:
+          media: files
+          extensions: [mp4, mov, webm]
+      - name: video_1_at
+        type: number
+        label: "Carousel video 1 – slide number"
+        description: "Which slide it appears as: 1 = first, 3 = third. Leave empty to put it last."
+      - name: video_2
+        type: file
+        label: "Carousel video 2 (optional)"
+        description: "Add a video into a carousel post."
+        options:
+          media: files
+          extensions: [mp4, mov, webm]
+      - name: video_2_at
+        type: number
+        label: "Carousel video 2 – slide number"
+        description: "Which slide it appears as: 1 = first, 3 = third. Leave empty to put it last."
+      - name: video_3
+        type: file
+        label: "Carousel video 3 (optional)"
+        description: "Add a video into a carousel post."
+        options:
+          media: files
+          extensions: [mp4, mov, webm]
+      - name: video_3_at
+        type: number
+        label: "Carousel video 3 – slide number"
+        description: "Which slide it appears as: 1 = first, 3 = third. Leave empty to put it last."
       - name: link
         type: string
         label: "Link to the post"
