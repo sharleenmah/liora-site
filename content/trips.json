@@ -87,6 +87,13 @@
       "/media/images/13-1.jpg"
     ],
     "latitude": "31.628674° N",
-    "longitude": "-7.992047° W"
+    "longitude": "-7.992047° W",
+    "moment_videos": [
+      "/media/files/bongo-drums-compressed.mp4",
+      "/media/files/quad-bike.mp4",
+      "/media/files/Hat Spin.mp4",
+      "/media/files/tea-pour.mp4",
+      "/media/files/Fire-Spin.mp4"
+    ]
   }
 ]
