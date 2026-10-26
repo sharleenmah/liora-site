@@ -40,7 +40,7 @@
   },
   {
     "title": "Barcelona, Spain",
-    "subtitle": "Bespoke Travel Itinerary",
+    "subtitle": "Bespoke Trip Planning",
     "cover": "/media/images/park-guell-gaudi-7d2a8f25552ca5939e018b67688949e7-ebb42b602b8aa43e4745816ed948695d.webp",
     "details": "DATE: June 2026\nTRIP TYPE: City Break\nGROUP SIZE: 3 People\nINCLUDED: Flights, Accommodation, Itinerary, Activities, Transport ",
     "slideshow": [
@@ -49,6 +49,7 @@
       "/media/images/img6667.jpg",
       "/media/images/img6600.jpg"
     ],
+    "slideshow_caption": "#BCNisCalling",
     "itinerary_screenshots": [
       "/media/images/1-2.jpg",
       "/media/images/barcelona-copy.jpg",
