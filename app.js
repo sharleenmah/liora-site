@@ -63,7 +63,9 @@ function bg(o,i){return o.img?"url('"+String(o.img).replace(/'/g,"%27")+"') cent
 function $(i){return document.getElementById(i)}
 /* random photos on every load */
 var pool=CONTENT.photos.map(function(p,i){return{p:p,i:i}}).sort(function(){return Math.random()-.5});
-document.querySelectorAll(".it").forEach(function(t,k){var o=pool[k%pool.length];t.style.background=bg(o.p,o.i)});
+document.querySelectorAll(".it").forEach(function(t,k){var o=pool[k%pool.length];t.style.background=bg(o.p,o.i);t.dataset.k=k%pool.length});
+/* keep each photo's true shape (no cropping) */
+pool.forEach(function(o,k){if(!o.p.img)return;var im=new Image();im.onload=function(){if(!im.naturalHeight)return;o.r=im.naturalWidth/im.naturalHeight;document.querySelectorAll('.it[data-k="'+k+'"]').forEach(function(t){t.style.aspectRatio=o.r})};im.src=o.p.img});
 if(CONTENT.portrait.img){var meF=$("me").parentNode;meF.classList.add("real");meF.innerHTML=pic(CONTENT.portrait.img,"Sharleen Mahembe")}
 /* portfolio list */
 var cats=$("cats"),rev=document.createElement("div");rev.className="reveal";cats.appendChild(rev);
@@ -128,7 +130,7 @@ function fly(){
   setTimeout(function(){hl.style.visibility="visible";$("intro").remove();document.body.classList.remove("lock");document.body.classList.add("go")},1200)}
 /* black-and-white cursor reveal */
 var rv=$("rv"),lx=-999,ly=-999,lastP=0,vis=false;
-function spawn(x,y){var o=pool[Math.floor(Math.random()*pool.length)],w=110+Math.random()*150,r=[.75,.8,1,1.33][Math.floor(Math.random()*4)],d=document.createElement("div");
+function spawn(x,y){var o=pool[Math.floor(Math.random()*pool.length)],w=110+Math.random()*150,r=o.r||[.75,.8,1,1.33][Math.floor(Math.random()*4)],d=document.createElement("div");
   d.className="rp";d.style.cssText="width:"+w+"px;height:"+w/r+"px;left:"+(x-w/2)+"px;top:"+(y-w/r/2)+"px;background:"+bg(o.p,o.i);
   rv.appendChild(d);requestAnimationFrame(function(){requestAnimationFrame(function(){d.classList.add("on")})});
   setTimeout(function(){d.classList.add("off")},1700);setTimeout(function(){d.remove()},2400)}
@@ -206,7 +208,7 @@ function tripHTML(t){var nn=t.notes.filter(Boolean);if(nn.length){CONTENT.pages.
   return'<div class="th"><div class="dp"><h2>'+t.title+'</h2>'+dpar(t.desc)+'</div>'+mapHTML(t)+'</div><div class="pm"><ul>'+t.meta.map(function(m){return'<li><b>'+m[0]+'</b>'+m[1]+'</li>'}).join("")+'</ul><div class="poly" id="poly">'+t.slides.map(function(s,i){return'<i'+(i==0?' class="on"':'')+' style="background:'+bg({img:s},i+5)+'"></i>'}).join("")+'<span>'+(t.polyCap||t.title+", 2026")+'</span></div></div>'
   +'<h3>The itinerary</h3><div class="notes">'+t.notes.map(function(n,i){return n?'<button class="note g real" type="button" data-p="itn" data-i="'+i+'" style="--r:'+(((i*5)%7)-3)+'deg" aria-label="Enlarge itinerary page '+(i+1)+'"><img src="'+n+'" alt="Itinerary page '+(i+1)+'" loading="lazy"></button>':'<div class="note" style="--r:'+(((i*5)%7)-3)+'deg">Itinerary screenshot</div>'}).join("")+'</div>'
   +'<h3>Moments</h3><div class="mo">'+t.moments.map(function(m,i){var vid=/\.(mp4|mov|webm|m4v)$/i.test(m);return'<div style="background:'+(vid?'#1b1b1d':bg({img:m},i+7))+'">'+(vid?'<video src="'+m+'" autoplay muted loop playsinline></video>':'')+'</div>'}).join("")+'</div>'
-  +'<h3>In their words</h3><div class="rev">'+t.reviews.map(function(r){return'<blockquote>'+r.text+'<span>'+r.by+'</span></blockquote>'}).join("")+'</div>'}
+  +(t.reviews.length?'<h3>In their words</h3><div class="rev">'+t.reviews.map(function(r){return'<blockquote>'+r.text+'<span>'+r.by+'</span></blockquote>'}).join("")+'</div>':"")}
 function slideshow(){var s=document.querySelectorAll("#poly i"),k=0;clearInterval(pjT);pjT=setInterval(function(){s[k].classList.remove("on");k=(k+1)%s.length;s[k].classList.add("on")},1800)}
 document.addEventListener("click",function(e){var c=e.target.closest("[data-pj]"),t=e.target.closest("[data-tr]"),tb=e.target.closest(".tabs button"),m=e.target.closest(".tg button");
   if(c)openPanel(c,projHTML(CONTENT.design.projects[+c.dataset.pj]),pshows);else if(t)openPanel(t,tripHTML(CONTENT.trips[+t.dataset.tr]),slideshow);else if(e.target.closest("#pjx"))closePanel();
