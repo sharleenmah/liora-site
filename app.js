@@ -65,7 +65,7 @@ function $(i){return document.getElementById(i)}
 var pool=CONTENT.photos.map(function(p,i){return{p:p,i:i}}).sort(function(){return Math.random()-.5});
 document.querySelectorAll(".it").forEach(function(t,k){var o=pool[k%pool.length];t.style.background=bg(o.p,o.i);t.dataset.k=k%pool.length;t.dataset.ix=k;itPlace(t,k,.75)});
 /* phones: six cells (3 above the logo, 3 below) so photos are big and never overlap */
-function itPlace(t,k,r){if(innerWidth>800)return;var W=innerWidth,H=innerHeight,cw=W*.28,ch=H*.25,col=k%3,row=k<3?0:1,cx=W*.04+col*(cw+W*.04),cy=row?H*.69:H*.05,w=Math.min(cw,ch*r),h=w/r;
+function itPlace(t,k,r){if(innerWidth>800)return;var CELL=[[4,4,40,24],[52,10,42,20],[2,38,20,22],[78,40,20,22],[6,69,38,24],[52,72,42,20]],W=innerWidth,H=innerHeight,c=CELL[k%6],cw=W*c[2]/100,ch=H*c[3]/100,cx=W*c[0]/100,cy=H*c[1]/100,w=Math.min(cw,ch*r),h=w/r;
  t.style.width=w+"px";t.style.left=(cx+(cw-w)/2)+"px";t.style.top=(cy+(ch-h)/2)+"px";t.style.aspectRatio=r}
 /* keep each photo's true shape (no cropping) */
 pool.forEach(function(o,k){if(!o.p.img)return;var im=new Image();im.onload=function(){if(!im.naturalHeight)return;o.r=im.naturalWidth/im.naturalHeight;document.querySelectorAll('.it[data-k="'+k+'"]').forEach(function(t){t.style.aspectRatio=o.r;if(innerWidth<=800)itPlace(t,+t.dataset.ix,o.r)})};im.src=o.p.img});
@@ -74,9 +74,9 @@ if(CONTENT.portrait.img){var meF=$("me").parentNode;meF.classList.add("real");me
 var cats=$("cats"),rev=document.createElement("div");rev.className="reveal";cats.appendChild(rev);
 CONTENT.categories.forEach(function(c){
   var li=document.createElement("li"),a=document.createElement("a"),p=document.createElement("div");
-  a.href=c.to||"/portfolio";a.textContent=c.name;li.appendChild(a);cats.insertBefore(li,rev);p.style.background=bg(c);rev.appendChild(p);
+  a.href=c.to||"/portfolio";a.textContent=c.name;li.appendChild(a);cats.insertBefore(li,rev);p.style.background=bg(c);rev.appendChild(p);if(matchMedia("(max-width:800px)").matches){li.className="cc";li.style.background=bg(c)}
   function on(){document.body.classList.add("hov");p.classList.add("on")}function off(){document.body.classList.remove("hov");p.classList.remove("on")}
-  a.addEventListener("pointerenter",on);a.addEventListener("pointerleave",off);a.addEventListener("focus",on);a.addEventListener("blur",off);
+  a.addEventListener("pointerenter",function(e){if(e.pointerType!="touch")on()});a.addEventListener("pointerleave",off);a.addEventListener("focus",function(){if(matchMedia("(hover:hover)").matches)on()});a.addEventListener("blur",off);
 });
 /* reviews slideshow */
 var sl=$("slides"),dt=$("dots"),cur=0,timer;
