@@ -287,4 +287,5 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--yel);outline-offset
  /* instagram: two across, bigger */
  .so:first-of-type .tl{grid-template-columns:repeat(2,1fr)}
  .so:first-of-type .tl>.tile:last-child:nth-child(odd){grid-column:1/-1;width:calc(50% - .5rem);justify-self:center}
+ .mo{gap:.8rem;grid-auto-rows:calc((90vw - .8rem)/2/1.55);grid-auto-flow:dense}
 }

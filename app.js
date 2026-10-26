@@ -63,9 +63,12 @@ function bg(o,i){return o.img?"url('"+String(o.img).replace(/'/g,"%27")+"') cent
 function $(i){return document.getElementById(i)}
 /* random photos on every load */
 var pool=CONTENT.photos.map(function(p,i){return{p:p,i:i}}).sort(function(){return Math.random()-.5});
-document.querySelectorAll(".it").forEach(function(t,k){var o=pool[k%pool.length];t.style.background=bg(o.p,o.i);t.dataset.k=k%pool.length;if(innerWidth<=800){var w=Math.min(parseFloat(t.style.width)*2.4,40),l=parseFloat(t.style.left);t.style.width=w+"vw";t.style.left=Math.max(3,Math.min(l,97-w))+"%"}});
+document.querySelectorAll(".it").forEach(function(t,k){var o=pool[k%pool.length];t.style.background=bg(o.p,o.i);t.dataset.k=k%pool.length;t.dataset.ix=k;itPlace(t,k,.75)});
+/* phones: six cells (3 above the logo, 3 below) so photos are big and never overlap */
+function itPlace(t,k,r){if(innerWidth>800)return;var W=innerWidth,H=innerHeight,cw=W*.28,ch=H*.25,col=k%3,row=k<3?0:1,cx=W*.04+col*(cw+W*.04),cy=row?H*.69:H*.05,w=Math.min(cw,ch*r),h=w/r;
+ t.style.width=w+"px";t.style.left=(cx+(cw-w)/2)+"px";t.style.top=(cy+(ch-h)/2)+"px";t.style.aspectRatio=r}
 /* keep each photo's true shape (no cropping) */
-pool.forEach(function(o,k){if(!o.p.img)return;var im=new Image();im.onload=function(){if(!im.naturalHeight)return;o.r=im.naturalWidth/im.naturalHeight;document.querySelectorAll('.it[data-k="'+k+'"]').forEach(function(t){t.style.aspectRatio=o.r})};im.src=o.p.img});
+pool.forEach(function(o,k){if(!o.p.img)return;var im=new Image();im.onload=function(){if(!im.naturalHeight)return;o.r=im.naturalWidth/im.naturalHeight;document.querySelectorAll('.it[data-k="'+k+'"]').forEach(function(t){t.style.aspectRatio=o.r;if(innerWidth<=800)itPlace(t,+t.dataset.ix,o.r)})};im.src=o.p.img});
 if(CONTENT.portrait.img){var meF=$("me").parentNode;meF.classList.add("real");meF.innerHTML=pic(CONTENT.portrait.img,"Sharleen Mahembe")}
 /* portfolio list */
 var cats=$("cats"),rev=document.createElement("div");rev.className="reveal";cats.appendChild(rev);
@@ -131,6 +134,10 @@ function fly(){
 /* black-and-white cursor reveal */
 var TOUCH=matchMedia("(hover:none)").matches,rv=$("rv"),lx=-999,ly=-999,lastP=0,vis=false;
 function spawn(x,y){var o=pool[Math.floor(Math.random()*pool.length)],w=TOUCH?68+Math.random()*62:110+Math.random()*150,r=o.r||[.75,.8,1,1.33][Math.floor(Math.random()*4)],d=document.createElement("div");
+  if(TOUCH){var B=rv.getBoundingClientRect(),T=rv.querySelector(".rvt"),Q=T?T.getBoundingClientRect():null,h=w/r,ok=false;
+   for(var n=0;n<14&&!ok;n++){x=w/2+8+Math.random()*(B.width-w-16);y=h/2+8+Math.random()*(B.height-h-16);
+    ok=!Q||(x+w/2<Q.left-B.left-10||x-w/2>Q.right-B.left+10||y+h/2<Q.top-B.top-10||y-h/2>Q.bottom-B.top+10)}
+   if(!ok)return}
   d.className="rp";d.style.cssText="width:"+w+"px;height:"+w/r+"px;left:"+(x-w/2)+"px;top:"+(y-w/r/2)+"px;background:"+bg(o.p,o.i);
   rv.appendChild(d);requestAnimationFrame(function(){requestAnimationFrame(function(){d.classList.add("on")})});
   setTimeout(function(){d.classList.add("off")},TOUCH?1500:1700);setTimeout(function(){d.remove()},TOUCH?2100:2400)}
@@ -233,7 +240,7 @@ function tileHTML(p,i,ar){var inner="";
  else inner='<div style="position:absolute;inset:0;background:'+bg({img:p.src},i+9)+'"></div>';
  return'<div class="fr tile" style="aspect-ratio:'+ar+'"><div class="ph">'+inner+'</div><span class="tp sm">'+(p.type=="video"?"▶\uFE0E VIDEO":p.type=="carousel"?"SWIPE →":"POST")+'</span>'+(p.href?'<a class="go" href="'+p.href+'" target="_blank" rel="noopener" aria-label="Open post">↗\uFE0E</a>':"")+'</div>'}
 function soc(name,url,posts,ar){return'<section class="so"><header><h2>'+name+'</h2>'+(url?'<a class="sm" href="'+url+'" target="_blank" rel="noopener">VISIT PAGE ↗\uFE0E</a>':"")+'</header><div class="tl">'+posts.map(function(p,i){return tileHTML(p,i,ar)}).join("")+'</div></section>'}
-$("ct").innerHTML='<div class="ic"></div><h1>CONTACT ME</h1><div class="ch"><p>Tell me a little about what you’re dreaming up and let’s start creating something beautiful together.</p><div class="em"><a class="big" id="eml" href="#">…</a><button class="sm" id="cpy" type="button">COPY</button></div><div class="lk sm"><a href="'+(CC.linkedin||"#")+'" target="_blank" rel="noopener">LINKEDIN ↗</a><a href="'+(CC.instagram||"#")+'" target="_blank" rel="noopener">INSTAGRAM ↗</a><a href="'+(CC.tiktok||"#")+'" target="_blank" rel="noopener">TIKTOK ↗</a></div><p style="margin:2.4rem 0 0" class="sm"><a href="/#enquire" style="color:var(--yel);border-bottom:1px solid var(--yel)">PREFER A FORM? SEND AN ENQUIRY</a></p></div>'
+$("ct").innerHTML='<div class="ic"></div><h1>CONTACT ME</h1><div class="ch"><p>Tell me a little about what you’re dreaming up and let’s start creating something beautiful together.</p><div class="em"><a class="big" id="eml" href="#">…</a><button class="sm" id="cpy" type="button">COPY</button></div><div class="lk sm"><a href="'+(CC.linkedin||"#")+'" target="_blank" rel="noopener">LINKEDIN ↗\uFE0E</a><a href="'+(CC.instagram||"#")+'" target="_blank" rel="noopener">INSTAGRAM ↗\uFE0E</a><a href="'+(CC.tiktok||"#")+'" target="_blank" rel="noopener">TIKTOK ↗\uFE0E</a></div><p style="margin:2.4rem 0 0" class="sm"><a href="/#enquire" style="color:var(--yel);border-bottom:1px solid var(--yel)">PREFER A FORM? SEND AN ENQUIRY</a></p></div>'
  +soc("Instagram",CC.instagram,CC.instagramPosts,"4/5")+soc("TikTok",CC.tiktok,CC.tiktokPosts,"9/16");
 $("eml").textContent=EM;$("eml").href="mailto:"+EM;
 $("cpy").addEventListener("click",function(){var b=this,ok=function(){b.textContent="COPIED";setTimeout(function(){b.textContent="COPY"},1600)};
