@@ -43,6 +43,12 @@
     "subtitle": "Bespoke Travel Itinerary",
     "cover": "/media/images/park-guell-gaudi-7d2a8f25552ca5939e018b67688949e7-ebb42b602b8aa43e4745816ed948695d.webp",
     "details": "DATE: June 2026\nTRIP TYPE: City Break\nGROUP SIZE: 3 People\nINCLUDED: Flights, Accommodation, Itinerary, Activities, Transport ",
+    "slideshow": [
+      "/media/images/img6731-1.jpg",
+      "/media/images/img6623-2.jpg",
+      "/media/images/img6667.jpg",
+      "/media/images/img6600.jpg"
+    ],
     "itinerary_screenshots": [
       "/media/images/1-2.jpg",
       "/media/images/barcelona-copy.jpg",
@@ -53,13 +59,16 @@
     "latitude": "41.3888",
     "longitude": "2.1590",
     "moments": [
-      "/media/images/img3435.jpeg",
       "/media/images/img3175-1.jpeg",
       "/media/images/img6018.jpeg",
       "/media/images/img3233.jpeg",
-      "/media/images/img3138.jpeg"
+      "/media/images/img6186.jpg"
     ],
-    "review1_text": "\"Three days sounded like nowhere near enough for Barcelona, but Sharleen’s itinerary made it feel like we’d had a week. Every day had a clear plan, so we saw the Sagrada Família and Park Güell without any queuing or wasted time. She’d also left proper gaps for doing nothing, like a long afternoon on the beach and a boat ride out on the water that ended up being a highlight.\"",
+    "moment_videos": [
+      "/media/files/fun.mp4",
+      "/media/files/water-run.mp4"
+    ],
+    "review1_text": "\"72 hours sounded like nowhere near enough for Barcelona, but Sharleen’s itinerary made it feel like we’d had a week. Every day had a clear plan, so we saw the Sagrada Família and Park Güell without any queuing or wasted time. She’d also left proper gaps for doing nothing, like a long afternoon on the beach and a boat ride out on the water that ended up being a highlight.\"",
     "review1_by": "Sharon"
   }
 ]
