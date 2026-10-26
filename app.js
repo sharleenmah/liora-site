@@ -211,7 +211,7 @@ function slideshow(){var s=document.querySelectorAll("#poly i"),k=0;clearInterva
 document.addEventListener("click",function(e){var c=e.target.closest("[data-pj]"),t=e.target.closest("[data-tr]"),tb=e.target.closest(".tabs button"),m=e.target.closest(".tg button");
   if(c)openPanel(c,projHTML(CONTENT.design.projects[+c.dataset.pj]),pshows);else if(t)openPanel(t,tripHTML(CONTENT.trips[+t.dataset.tr]),slideshow);else if(e.target.closest("#pjx"))closePanel();
   else if(tb){var s=$(tb.dataset.t);if(s)s.scrollIntoView({behavior:"smooth"})}
-  else if(m){var v=m.closest("main");v.classList.toggle("gmode",m.dataset.m=="grid");[].forEach.call(v.querySelectorAll(".tg button"),function(b){b.classList.toggle("on",b==m)});sizeHS(v.id);v.querySelector(".tg").scrollIntoView()}});
+  else if(m){var v=m.closest("main");v.classList.toggle("gmode",m.dataset.m=="grid");layG(v);[].forEach.call(v.querySelectorAll(".tg button"),function(b){b.classList.toggle("on",b==m)});sizeHS(v.id);v.querySelector(".tg").scrollIntoView()}});
 addEventListener("keydown",function(e){if(e.key=="Escape")closePanel()});
 /* services page (edit this block, or let the CMS) */
 $("svc").innerHTML='<div class="ic"></div><h1>SERVICES</h1><div class="sv2" id="sv2">'+CONTENT.svc.map(function(s,i){
@@ -267,3 +267,19 @@ document.addEventListener("click",function(e){var t=e.target;
 addEventListener("keydown",function(e){if(!z.classList.contains("on"))return;if(e.key=="Escape"){hide();e.stopPropagation()}if(e.key=="ArrowLeft"&&L.length>1)sh(k-1);if(e.key=="ArrowRight"&&L.length>1)sh(k+1)},true)})();
 
 document.addEventListener("load",function(e){var t=e.target;if(t.tagName=="IMG"&&t.naturalHeight&&t.closest&&t.closest("button.g"))t.closest("button.g").style.setProperty("--ar",t.naturalWidth/t.naturalHeight)},true);
+/* justified grid for portrait/event grid view: every photo shows whole, rows fill the width, a ticked ("featured") photo makes its row taller */
+function layG(v){var h=v&&v.querySelector(".hst");if(!h||!v.classList.contains("gmode"))return;
+ var W=h.clientWidth,g=parseFloat(getComputedStyle(h).columnGap)||19,H=W<600?W*.55:Math.max(240,Math.min(W*.3,440)),fr=[].slice.call(h.querySelectorAll(".fr")),row=[],sa=0;
+ function ar(f){return parseFloat(f.style.getPropertyValue("--ar"))||.75}
+ function put(r,height){r.forEach(function(f){f.style.setProperty("--h",height+"px");f.style.setProperty("--w",(ar(f)*height)+"px")})}
+ function tgt(r){return r.some(function(f){return f.classList.contains("feat")})?H*1.35:H}
+ function close(r,last){var s=r.reduce(function(x,f){return x+ar(f)},0),hh=(W-g*(r.length-1))/s;if(last&&hh>tgt(r)*1.2)hh=tgt(r);put(r,hh)}
+ function sum(r){return r.reduce(function(x,y){return x+ar(y)},0)}
+ function hOf(r){return (W-g*(r.length-1))/sum(r)}
+ for(var i=0;i<fr.length;i++){var f=fr[i],t=row.concat([f]),hh=hOf(t),T=tgt(t);
+  if(hh>T){row=t;continue}
+  if(row.length&&hOf(row)/tgt(row)<T/hh){close(row,false);row=[f];if(hOf(row)<=tgt(row)){close(row,false);row=[]}}
+  else{row=t;close(row,false);row=[]}}
+ if(row.length)close(row,true)}
+addEventListener("resize",function(){["ptr","evt"].forEach(function(id){layG(document.getElementById(id))})});
+document.addEventListener("load",function(e){var t=e.target;if(t.tagName=="IMG"&&t.closest&&t.closest("button.g")){var v=t.closest("main");clearTimeout(v._lt);v._lt=setTimeout(function(){layG(v)},60)}},true);
