@@ -27,6 +27,7 @@ function build(D){
   [].forEach.call(document.querySelectorAll("[data-t]"),function(el){var v=site[el.getAttribute("data-t")];if(typeof v=="string"&&v.trim())el.textContent=v});
   [].forEach.call(document.querySelectorAll("[data-link]"),function(el){var k=el.getAttribute("data-link"),v=site[k];if(typeof v=="string"&&v.trim())el.href=v;
     if(k=="youtube"){var h=document.querySelector('[data-hide="youtube"]');if(h)h.style.display=(v&&v.trim())?"":"none"}});
+  [].forEach.call(document.querySelectorAll('[data-hide="review_link"]'),function(h){h.style.display=(typeof site.review_link=="string"&&site.review_link.trim())?"":"none"});
   if(typeof site.marquee=="string"&&site.marquee.trim())[].forEach.call(document.querySelectorAll("#mq span"),function(s){s.textContent=site.marquee});
   /* data */
   CONTENT.portrait={img:site.my_photo||""};

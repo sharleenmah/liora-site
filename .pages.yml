@@ -107,6 +107,12 @@ content:
       - name: youtube
         type: string
         label: "YouTube link (leave empty to hide)"
+      - name: review_link
+        type: string
+        label: "Google review link (leave empty to hide the review button and footer link)"
+      - name: review_button
+        type: string
+        label: "Review button text (under client reviews)"
       - name: footer_text
         type: string
         label: "Footer text"
