@@ -1,6 +1,7 @@
 /* LIORA Creative Studio – site script. All text, photos, prices and links come from /content/*.json (edited through Pages CMS). */
 var CONTENT={};
 (function(){
+function foc(v){v=parseFloat(v);return isNaN(v)?"50%":Math.min(100,Math.max(0,v))+"%"}
 var names=["site","categories","reviews","pages","portrait-photos","event-photos","posters","commissions","design-projects","trips","services","instagram-posts","tiktok-posts","terms"];
 function J(n){return fetch("/content/"+n+".json",{cache:"no-cache"}).then(function(r){if(!r.ok)throw 0;return r.json()}).catch(function(){return null})}
 function A(x,d){return Array.isArray(x)&&x.length?x:d}
@@ -37,7 +38,7 @@ function build(D){
   if(!CONTENT.photos.length)CONTENT.photos=E(11).map(function(){return{img:""}});
   var KNOWN={"/portrait-photography":1,"/event-photography":1,"/graphic-design":1,"/trip-planning":1};
   function catTo(c){var t=(c.to||"").trim();if(KNOWN[t])return t;var n=(c.name||"").toLowerCase();return/portrait/.test(n)?"/portrait-photography":/event/.test(n)?"/event-photography":/design/.test(n)?"/graphic-design":/trip|travel|itiner/.test(n)?"/trip-planning":"/portfolio"}
-  CONTENT.categories=A(D.categories,[]).map(function(c,i){return{name:c.name,to:catTo(c),img:c.img||"",grad:GR[i%GR.length]}});
+  CONTENT.categories=A(D.categories,[]).map(function(c,i){return{name:c.name,to:catTo(c),img:c.img||"",grad:GR[i%GR.length],fx:foc(c.focus_x),fy:foc(c.focus_y)}});
   CONTENT.reviews=A(D.reviews,[{text:"",by:""}]);
   CONTENT.pages={
    ptr:{title:"PORTRAIT PHOTOGRAPHY",next:["/event-photography","NEXT: EVENT PHOTOGRAPHY"],photos:ptr,text:paras(pg.portrait_text),tag:pg.portrait_tagline||""},
@@ -50,7 +51,7 @@ function build(D){
   CONTENT.trips=A(D.trips,[]).map(function(t,i){return{title:t.title||"Destination "+(i+1),sub:t.subtitle||"",cover:t.cover||"",stub:t.ticket_text===undefined?"ADMIT ONE":t.ticket_text,stubAt:1,leafAt:4,polyCap:t.slideshow_caption||"",desc:t.desc||"",
     meta:meta(t.details),slides:A(t.slideshow,E(4)),notes:A(t.itinerary_screenshots,E(5)),moments:A(A(t.moments,[]).concat(A(t.moment_videos,[])),E(6)),
     mapImg:t.map_image||"",lat:t.latitude,lon:t.longitude,reviews:[1,2,3].map(function(n){return{text:t["review"+n+"_text"],by:t["review"+n+"_by"]||""}}).filter(function(r){return r.text})}});
-  CONTENT.svc=A(D.services,[]).map(function(s){return{name:s.name||"",desc:s.desc||"",price:s.price||"",img:s.img||""}});
+  CONTENT.svc=A(D.services,[]).map(function(s){return{name:s.name||"",desc:s.desc||"",price:s.price||"",img:s.img||"",fx:foc(s.focus_x),fy:foc(s.focus_y)}});
   CONTENT.guideUrl=site.guide_pdf||"";
   CONTENT.guide={heading:site.guide_heading||"LIKE WHAT YOU SEE?",text:site.guide_text||""};
   CONTENT.formKey=(site.form_key||"").trim();
@@ -76,7 +77,7 @@ if(CONTENT.portrait.img){var meF=$("me").parentNode;meF.classList.add("real");me
 var cats=$("cats"),rev=document.createElement("div");rev.className="reveal";cats.appendChild(rev);
 CONTENT.categories.forEach(function(c){
   var li=document.createElement("li"),a=document.createElement("a"),p=document.createElement("div");
-  a.href=c.to||"/portfolio";a.textContent=c.name;li.appendChild(a);cats.insertBefore(li,rev);p.style.background=bg(c);rev.appendChild(p);if(matchMedia("(max-width:800px)").matches){li.className="cc";li.style.background=bg(c)}
+  a.href=c.to||"/portfolio";a.textContent=c.name;li.appendChild(a);cats.insertBefore(li,rev);p.style.background=bg(c);rev.appendChild(p);if(matchMedia("(max-width:800px)").matches){li.className="cc";li.style.background=bg(c);li.style.setProperty("--fx",c.fx);li.style.setProperty("--fy",c.fy)}
   function on(){document.body.classList.add("hov");p.classList.add("on")}function off(){document.body.classList.remove("hov");p.classList.remove("on")}
   a.addEventListener("pointerenter",function(e){if(e.pointerType!="touch")on()});a.addEventListener("pointerleave",off);a.addEventListener("focus",function(){if(matchMedia("(hover:hover)").matches)on()});a.addEventListener("blur",off);
 });
@@ -228,7 +229,7 @@ document.addEventListener("click",function(e){var c=e.target.closest("[data-pj]"
 addEventListener("keydown",function(e){if(e.key=="Escape")closePanel()});
 /* services page (edit this block, or let the CMS) */
 $("svc").innerHTML='<div class="ic"></div><h1>SERVICES</h1><div class="sv2" id="sv2">'+CONTENT.svc.map(function(s,i){
- return'<div class="sp'+(i==0?' on':'')+'" tabindex="0"><div class="bgi" style="background:'+bg({img:s.img},i+1)+'"></div><div class="ov"></div><span class="no sm">'+pad(i+1)+'</span><div class="vt"><span>'+s.name+'</span></div><div class="in"><span class="no sm">'+pad(i+1)+'</span><h3>'+s.name+'</h3><p>'+s.desc+'</p><a class="btn sm" href="/#enquire" data-svc="'+i+'">'+s.price+' →</a></div></div>'}).join("")+'</div>'
+ return'<div class="sp'+(i==0?' on':'')+'" tabindex="0" style="--fx:'+s.fx+';--fy:'+s.fy+'"><div class="bgi" style="background:'+bg({img:s.img},i+1)+'"></div><div class="ov"></div><span class="no sm">'+pad(i+1)+'</span><div class="vt"><span>'+s.name+'</span></div><div class="in"><span class="no sm">'+pad(i+1)+'</span><h3>'+s.name+'</h3><p>'+s.desc+'</p><a class="btn sm" href="/#enquire" data-svc="'+i+'">'+s.price+' →</a></div></div>'}).join("")+'</div>'
  +'<div class="guide"><h2>'+esc(CONTENT.guide.heading)+'</h2><p>'+esc(CONTENT.guide.text)+'</p><a class="btn sm" id="gdl" href="/#enquire">DOWNLOAD</a></div>';
 if(CONTENT.guideUrl){var gd=$("gdl");gd.href=CONTENT.guideUrl;gd.target="_blank";gd.setAttribute("download","")}
 function tc(n){return String(n||"").toLowerCase().replace(/(^|[\s\/&-])([a-z])/g,function(m,a,b){return a+b.toUpperCase()})}

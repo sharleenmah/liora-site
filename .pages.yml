@@ -165,6 +165,12 @@ content:
         options:
           media: images
           extensions: [jpg, jpeg, png, webp]
+      - name: focus_x
+        type: number
+        label: "Phone photo focus – left/right (0 = far left, 50 = centre, 100 = far right)"
+      - name: focus_y
+        type: number
+        label: "Phone photo focus – up/down (0 = top, 50 = centre, 100 = bottom)"
   - name: pages
     label: "Page text (portrait, event, design, trips)"
     type: file
@@ -517,6 +523,12 @@ content:
         options:
           media: images
           extensions: [jpg, jpeg, png, webp]
+      - name: focus_x
+        type: number
+        label: "Phone photo focus – left/right (0 = far left, 50 = centre, 100 = far right)"
+      - name: focus_y
+        type: number
+        label: "Phone photo focus – up/down (0 = top, 50 = centre, 100 = bottom)"
   - name: instagram
     label: "Contact – Instagram posts"
     type: file
