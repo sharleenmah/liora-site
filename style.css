@@ -51,7 +51,7 @@ nav a:hover::after{right:0}
 .slides figure.on{opacity:1}
 .slides blockquote{font-size:clamp(1.5rem,3.2vw,2.6rem);margin-bottom:1.2rem}
 .dots{display:flex;gap:.6rem;justify-content:center;margin-top:1.4rem}
-.rvl{text-align:center;margin:1.8rem 0 0}.rvl .btn{margin-top:0}.rvl .btn::after{content:" \2197\FE0E"}
+.rvl{text-align:center;margin:2.9rem 0 0}.rvl .btn{margin-top:0}.rvl .btn::after{content:" \2197\FE0E"}
 .dots button{width:.65rem;height:.65rem;padding:0;border-radius:50%;border:1px solid var(--yel);background:none;cursor:pointer}
 .dots button.on{background:var(--yel)}
 .rv{position:relative;height:100vh;min-height:520px;display:grid;place-items:center;text-align:center;overflow:hidden}
