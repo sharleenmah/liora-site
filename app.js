@@ -1,6 +1,10 @@
 /* LIORA Creative Studio – site script. All text, photos, prices and links come from /content/*.json (edited through Pages CMS). */
 var CONTENT={};
 (function(){
+/* Moments: the 1st (hero) and 4th (tall) tiles stay as they are; the other photos and the videos are spread evenly between the small tiles */
+function weave(ph,vd){var b=ph.concat(vd);if(!b.length)return E(6);var isV=function(m){return/\.(mp4|mov|webm|m4v)$/i.test(m)},rp=[],rv=[];b.forEach(function(m,i){if(i!=0&&i!=3)(isV(m)?rv:rp).push(m)});
+  var n=rp.length+rv.length,vs=rv.length,vp={},rest=[],pi=0,vi=0,k;for(k=0;k<vs;k++)vp[Math.floor((k+.5)*n/vs)]=1;for(k=0;k<n;k++)rest.push(vp[k]?rv[vi++]:rp[pi++]);
+  return b.map(function(m,i){return(i==0||i==3)?m:rest.shift()})}
 function foc(v){v=parseFloat(v);return isNaN(v)?"50%":Math.min(100,Math.max(0,v))+"%"}
 var names=["site","categories","reviews","pages","portrait-photos","event-photos","posters","commissions","design-projects","trips","services","instagram-posts","tiktok-posts","terms"];
 function J(n){return fetch("/content/"+n+".json",{cache:"no-cache"}).then(function(r){if(!r.ok)throw 0;return r.json()}).catch(function(){return null})}
@@ -49,7 +53,7 @@ function build(D){
   var ti=paras(pg.trip_intro),tt=(pg.trip_tagline||"").trim();if(!tt&&ti.length>1)tt=ti.pop();
   CONTENT.tripIntro=ti;CONTENT.tripTag=tt;CONTENT.designTag=(pg.design_tagline||"").trim()||"Bold ideas. Thoughtful details. Designs made to be remembered.";
   CONTENT.trips=A(D.trips,[]).map(function(t,i){return{title:t.title||"Destination "+(i+1),sub:t.subtitle||"",cover:t.cover||"",stub:t.ticket_text===undefined?"ADMIT ONE":t.ticket_text,stubAt:1,leafAt:4,polyCap:t.slideshow_caption||"",desc:t.desc||"",
-    meta:meta(t.details),slides:A(t.slideshow,E(4)),notes:A(t.itinerary_screenshots,E(5)),moments:A(A(t.moments,[]).concat(A(t.moment_videos,[])),E(6)),
+    meta:meta(t.details),slides:A(t.slideshow,E(4)),notes:A(t.itinerary_screenshots,E(5)),moments:weave(A(t.moments,[]),A(t.moment_videos,[])),
     mapImg:t.map_image||"",lat:t.latitude,lon:t.longitude,reviews:[1,2,3].map(function(n){return{text:t["review"+n+"_text"],by:t["review"+n+"_by"]||""}}).filter(function(r){return r.text})}});
   CONTENT.svc=A(D.services,[]).map(function(s){return{name:s.name||"",desc:s.desc||"",price:s.price||"",img:s.img||"",fx:foc(s.focus_x),fy:foc(s.focus_y)}});
   CONTENT.guideUrl=site.guide_pdf||"";
