@@ -2,12 +2,14 @@
   {
     "name": "Portrait Photography ",
     "to": "/portrait-photography",
-    "img": "/media/images/img7412-1.jpg"
+    "img": "/media/images/img7412-1.jpg",
+    "focus_y": 30
   },
   {
     "name": "Event Photography",
     "to": "/event-photography",
-    "img": "/media/images/img4864-1.jpg"
+    "img": "/media/images/img4864-1.jpg",
+    "focus_y": 25
   },
   {
     "name": "Graphic Design",
@@ -17,6 +19,7 @@
   {
     "name": "Trip Itineraries",
     "to": "/trip-planning",
-    "img": "/media/images/japan-phone-mockup-1.jpg"
+    "img": "/media/images/japan-phone-mockup-1.jpg",
+    "focus_y": 25
   }
 ]
