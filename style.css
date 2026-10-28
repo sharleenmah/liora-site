@@ -291,7 +291,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--yel);outline-offset
  .so:first-of-type .tl>.tile:last-child:nth-child(odd){grid-column:1/-1;width:calc(50% - .5rem);justify-self:center}
  .mo{gap:.8rem;grid-auto-rows:calc((90vw - .8rem)/2/1.55);grid-auto-flow:dense}
  .reveal{display:none}
- .cats li.cc{position:relative;overflow:hidden;border-radius:4px;margin-bottom:.8rem;min-height:108px;display:flex;align-items:flex-end}
+ .cats li.cc{position:relative;overflow:hidden;border-radius:4px;margin-bottom:.8rem;min-height:clamp(88px,calc((100svh - 330px)/4),150px);display:flex;align-items:flex-end;background-position:var(--fx,50%) var(--fy,50%)!important}
+ .sp .bgi{background-position:var(--fx,50%) var(--fy,50%)!important}
  .cats li.cc::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(24,24,26,.85),rgba(24,24,26,.35))}
  .cats li.cc a{position:relative;z-index:1;width:100%;padding:1.1rem 1.2rem;font-size:clamp(1.7rem,7vw,2.4rem);display:flex;justify-content:space-between;align-items:center;gap:1rem}
  .cats li.cc a::after{content:"\2192\FE0E";font:300 1.5rem Jost,sans-serif;color:var(--yel)}
