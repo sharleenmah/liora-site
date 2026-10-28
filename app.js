@@ -134,9 +134,8 @@ function fly(){
   setTimeout(function(){hl.style.visibility="visible";$("intro").remove();document.body.classList.remove("lock");document.body.classList.add("go")},1200)}
 /* black-and-white cursor reveal */
 var TOUCH=matchMedia("(hover:none)").matches,rv=$("rv"),lx=-999,ly=-999,lastP=0,vis=false;
-function spawn(x,y){var o=pool[Math.floor(Math.random()*pool.length)];
-  if(!o.r&&o.p.img){if(!o.ld){o.ld=1;var li=new Image();li.onload=function(){if(li.naturalHeight)o.r=li.naturalWidth/li.naturalHeight};li.src=o.p.img}
-   var kn=pool.filter(function(q){return q.r});if(!kn.length)return;o=kn[Math.floor(Math.random()*kn.length)]}
+function spawn(x,y,o){o=o||pool[Math.floor(Math.random()*pool.length)];
+  if(!o.r&&o.p.img){var li=new Image();li.onload=function(){if(li.naturalHeight){o.r=li.naturalWidth/li.naturalHeight;spawn(x,y,o)}};li.src=o.p.img;return}
   var w=TOUCH?68+Math.random()*62:110+Math.random()*150,r=o.r||[.75,.8,1,1.33][Math.floor(Math.random()*4)],d=document.createElement("div");
   if(TOUCH){var B=rv.getBoundingClientRect(),T=rv.querySelector(".rvt"),Q=T?T.getBoundingClientRect():null,h=w/r,ok=false;
    for(var n=0;n<14&&!ok;n++){x=w/2+8+Math.random()*(B.width-w-16);y=h/2+8+Math.random()*(B.height-h-16);
