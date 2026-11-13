@@ -120,7 +120,7 @@
         "name": "Civil, Elopement & Registry",
         "price": "£450",
         "best_for": "Intimate ceremonies",
-        "details": "Half day · 50 edited photos · 1 location\nHalf day · 75 edited photos · up to 2 locations\nHalf day · 120 edited photos · unlimited locations\nHalf day · 150 edited photos · unlimited locations + hardcover photo book"
+        "details": "Half day · 50 edited photos · 1 location\nHalf day · 75 edited photos · up to 2 locations\nHalf day · 120 edited photos · unlimited locations\nHalf day · 150 edited photos · unlimited locations"
       },
       {
         "name": "Domestic Weddings",
@@ -135,8 +135,8 @@
         "details": "EU · full day · 150 edited photos · up to 3 locations\nEU · full day · 250 edited photos · unlimited locations\nOutside the EU · full day · 150 edited photos · up to 3 locations\nOutside the EU · full day · 250 edited photos · unlimited locations"
       }
     ],
-    "included": "A planning call to map out your timeline, locations and must-have shots\nUp to 90 minutes of pre-ceremony coverage (not included for reception-only bookings)\nA sneak peek of edited images within 72 hours\nYour images delivered by a secure download link\nYour full gallery within 6 weeks\nA complimentary luxe hardcover photo book with full-day packages, delivered within 4 weeks of your final images",
-    "addons": "",
+    "included": "A planning call to map out your timeline, locations and must-have shots\nUp to 90 minutes of pre-ceremony coverage (not included for reception-only bookings)\nA sneak peek of edited images within 72 hours\nYour images delivered by a secure download link\nYour full gallery within 6 weeks\nA complimentary luxe hardcover photo book with full-day packages only, delivered within 4 weeks of your final images",
+    "addons": "Hardcover photo book: a luxe printed album for civil, elopement, registry and half-day packages",
     "notes": "Half-day coverage is 6 hours, usually pre-ceremony, ceremony and drinks reception, or the evening reception.\nFull-day coverage is 12 hours, including the 90 minutes of pre-ceremony coverage.\nFor weddings abroad, flights and accommodation are quoted separately. Extra days of coverage are charged at event photography rates.\nAll locations are within the same city unless agreed otherwise."
   },
   {
@@ -231,7 +231,7 @@
     "name": "Social Media Video Editing",
     "slug": "video",
     "from": "£60",
-    "intro": "Short-form content takes time, not just to edit but to get right. Pacing, captions, sound and transitions all shape how your video performs. I tailor every edit to your style, so it holds attention and is ready to post on Instagram, TikTok or YouTube.",
+    "intro": "Video editing is available by special request only, so get in touch with your project and I’ll let you know if I can take it on.\n\nShort-form content takes time, not just to edit but to get right. Pacing, captions, sound and transitions all shape how your video performs. I tailor every edit to your style, so it holds attention and is ready to post on Instagram, TikTok or YouTube.",
     "packages": [
       {
         "name": "Essential Edit",
@@ -272,7 +272,7 @@
         "name": "Essential",
         "price": "£650",
         "best_for": "Freelancers, events and launches",
-        "details": "1 scrolling page, up to 6 sections\nContact form and social links\nSimple editor for text and images\nBasic search setup\n2 revision rounds\nAround 3 weeks"
+        "details": "1 scrolling page, up to 6 sections\nContact form and social links\nSimple editor for text and images\nBasic search setup\n2 revision rounds\nFrom 3 weeks"
       },
       {
         "name": "Signature",
