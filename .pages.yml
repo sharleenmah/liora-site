@@ -172,7 +172,7 @@ content:
         type: number
         label: "Phone photo focus – up/down (0 = top, 50 = centre, 100 = bottom)"
   - name: pages
-    label: "Page text (portrait, event, design, trips)"
+    label: "Page text (portrait, event, design)"
     type: file
     path: content/pages.json
     format: json
@@ -198,13 +198,10 @@ content:
       - name: design_tagline
         type: string
         label: "Graphic design page – slogan"
-      - name: trip_intro
+      - name: itinerary_text
         type: text
-        label: "Trip itineraries page – intro"
-        description: "Blank line between paragraphs."
-      - name: trip_tagline
-        type: string
-        label: "Trip itineraries page – slogan"
+        label: "Graphic design page – travel itinerary design text"
+        description: "Shown under the poster wall. Leave a blank line between paragraphs."
   - name: portrait
     label: "Portrait photos"
     type: file
@@ -410,7 +407,7 @@ content:
         type: string
         label: "Year"
   - name: trips
-    label: "Trip itineraries"
+    label: "Itinerary designs (graphic design page)"
     type: file
     path: content/trips.json
     format: json

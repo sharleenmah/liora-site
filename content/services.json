@@ -39,15 +39,15 @@
     "img": "/media/images/06-1-1.jpg"
   },
   {
+    "name": "WEB DESIGN",
+    "desc": "Bespoke websites designed around your brand, with fast hosting, your own domain and a simple editor so you can update your content yourself.",
+    "price": "FROM £2,500",
+    "img": "/media/images/web-design-liora.jpg"
+  },
+  {
     "name": "READY MADE PRINTS",
     "desc": "Inspired by music, film, sports and contemporary visual culture, each print is a statement artwork: bold enough to stand alone, yet versatile enough to complement any room.",
     "price": "FROM £10",
     "img": "/media/images/stranger-things-mockup-3-1-1.jpg"
-  },
-  {
-    "name": "BESPOKE TRIP PLANNING",
-    "desc": "Bespoke trip planning, covering itineraries, flights and accommodation, designed to take the stress out of travelling.",
-    "price": "FROM £85",
-    "img": "/media/images/img2345.jpg"
   }
 ]
