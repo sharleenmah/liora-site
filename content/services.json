@@ -21,7 +21,7 @@
   {
     "name": "CUSTOM POSTER DESIGN",
     "desc": "Customised poster design, showcasing your favourite films, albums, sports teams and cultural moments in a fun and creative way.",
-    "price": "FROM £45",
+    "price": "FROM £60",
     "img": "/media/images/poster-mockup-bm5w1-1.jpg"
   },
   {
@@ -35,13 +35,13 @@
   {
     "name": "PRINTED MATERIAL DESIGN",
     "desc": "Brochures, book covers, magazine and merchandise design, carefully crafted to authentically reflect your brand image.",
-    "price": "FROM £30",
+    "price": "FROM £100",
     "img": "/media/images/06-1-1.jpg"
   },
   {
     "name": "WEB DESIGN",
     "desc": "Bespoke websites designed around your brand, with fast hosting, your own domain and a simple editor so you can update your content yourself.",
-    "price": "FROM £2,500",
+    "price": "FROM £650",
     "img": "/media/images/web-design-liora.jpg"
   },
   {
