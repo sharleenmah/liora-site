@@ -646,6 +646,13 @@ content:
         type: string
         label: "Starting price"
         description: "e.g. £100"
+      - name: banner
+        type: image
+        label: "Banner photo"
+        description: "Wide photo shown at the top of this service's section."
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp, mp4]
       - name: intro
         type: text
         label: "Intro"

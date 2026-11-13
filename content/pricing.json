@@ -26,7 +26,8 @@
     ],
     "included": "A short planning chat about your style, outfits and locations\nGentle direction and posing guidance throughout your shoot\nProfessional editing of every delivered image\nYour images delivered by a secure download link\nDelivery within 3–10 working days\nA personal usage licence for all your images",
     "addons": "24-hour express delivery: your gallery within one day of your shoot\nExtra edited images: add more photos from your session to your gallery\nCommercial usage licence: for images used in advertising or paid campaigns",
-    "notes": "Add-on prices are confirmed in your quote.\nTravel outside Bristol is quoted separately."
+    "notes": "Add-on prices are confirmed in your quote.\nTravel outside Bristol is quoted separately.",
+    "banner": "/media/images/img5958-2.jpg"
   },
   {
     "name": "Studio Portrait Photography",
@@ -55,7 +56,8 @@
     ],
     "included": "A short planning chat about your style, outfits and set-up\nStudio hire for the length of your session\nGentle direction and posing guidance throughout your shoot\nProfessional editing of every delivered image\nYour images delivered by a secure download link\nDelivery within 3–10 working days",
     "addons": "24-hour express delivery: your gallery within one day of your shoot\nExtra edited images: add more photos from your session to your gallery\nCommercial usage licence: for images used in advertising or paid campaigns",
-    "notes": "Studio sessions cancelled or rescheduled with less than 5 working days’ notice lose their deposit, as the studio is booked in advance."
+    "notes": "Studio sessions cancelled or rescheduled with less than 5 working days’ notice lose their deposit, as the studio is booked in advance.",
+    "banner": "/media/images/img6044.jpg"
   },
   {
     "name": "Event Photography",
@@ -102,7 +104,8 @@
     ],
     "included": "A pre-event call to plan key moments, people and shot lists\nDiscreet, documentary-style coverage with posed group shots where needed\nProfessional editing that keeps the atmosphere natural\nYour images delivered by a secure download link\nDelivery within 7–21 working days",
     "addons": "Extra hours of coverage: for events that run longer than planned\nExpress highlights: a small set of edited images within 48 hours of your event, ready for social media\nExtra edited images: more photos added to your gallery\nCommercial usage licence: for images used in advertising or paid campaigns",
-    "notes": "Travel and accommodation outside Bristol are quoted separately, based on your location and dates."
+    "notes": "Travel and accommodation outside Bristol are quoted separately, based on your location and dates.",
+    "banner": "/media/images/img6623-1.jpg"
   },
   {
     "name": "Wedding Photography",
@@ -137,7 +140,8 @@
     ],
     "included": "A planning call to map out your timeline, locations and must-have shots\nUp to 90 minutes of pre-ceremony coverage (not included for reception-only bookings)\nA sneak peek of edited images within 72 hours\nYour images delivered by a secure download link\nYour full gallery within 6 weeks\nA complimentary luxe hardcover photo book with full-day packages only, delivered within 4 weeks of your final images",
     "addons": "Hardcover photo book: a luxe printed album for civil, elopement, registry and half-day packages",
-    "notes": "Half-day coverage is 6 hours, usually pre-ceremony, ceremony and drinks reception, or the evening reception.\nFull-day coverage is 12 hours, including the 90 minutes of pre-ceremony coverage.\nFor weddings abroad, flights and accommodation are quoted separately. Extra days of coverage are charged at event photography rates.\nAll locations are within the same city unless agreed otherwise."
+    "notes": "Half-day coverage is 6 hours, usually pre-ceremony, ceremony and drinks reception, or the evening reception.\nFull-day coverage is 12 hours, including the 90 minutes of pre-ceremony coverage.\nFor weddings abroad, flights and accommodation are quoted separately. Extra days of coverage are charged at event photography rates.\nAll locations are within the same city unless agreed otherwise.",
+    "banner": "/media/images/img0743.jpg"
   },
   {
     "name": "Graphic Design",
@@ -225,7 +229,8 @@
     ],
     "included": "An initial consultation to understand your vision\nA moodboard and design direction before any drafts\nThe revision rounds listed in your package\nFinal files in print-ready and digital formats (PDF, PNG or JPEG)",
     "addons": "Printing: arranged for you at an extra cost\nEditable source files (PSD, AI, INDD): available on request",
-    "notes": "Revisions must be requested within 7 days of receiving each draft."
+    "notes": "Revisions must be requested within 7 days of receiving each draft.",
+    "banner": "/media/images/mn-mockup-1-1.jpg"
   },
   {
     "name": "Social Media Video Editing",
@@ -260,7 +265,8 @@
     ],
     "included": "A short brief so I understand how you want your content to feel\nRevisions: one round for Essential and Content edits, two for Creator and Premium\nFinal videos exported for your chosen platforms",
     "addons": "",
-    "notes": "*Colour grading on these packages needs footage recorded in Log format.\nYou supply all footage, audio and assets. Filming isn’t included unless agreed separately.\nYou’re responsible for having the rights to any music you provide. Any music I source is royalty-free or licensed.\nProject files aren’t included unless requested, and may incur an extra fee."
+    "notes": "*Colour grading on these packages needs footage recorded in Log format.\nYou supply all footage, audio and assets. Filming isn’t included unless agreed separately.\nYou’re responsible for having the rights to any music you provide. Any music I source is royalty-free or licensed.\nProject files aren’t included unless requested, and may incur an extra fee.",
+    "banner": "/media/files/ssstik.io_1792979610218.mp4"
   },
   {
     "name": "Web Design",
@@ -291,10 +297,32 @@
         "price": "£2,800",
         "best_for": "Selling products, prints, bookings or deposits",
         "details": "Signature site + online shop\nUp to 20 products or services\nSecure card payments via Stripe or Shopify\nOrder emails, delivery or collection options\n3 revision rounds\n5–7 weeks"
+      },
+      {
+        "group": "Aftercare & extras",
+        "name": "Domain Package",
+        "price": "£95",
+        "best_for": "Your own web address, sorted for 3 years",
+        "details": "Finding and registering a domain in your name\n3 years’ registration of a .com or .co.uk included\nConnecting it to your website\nEmail forwarding set up, so you@yourdomain reaches your inbox\nRenewal reminders before it expires"
+      },
+      {
+        "group": "Aftercare & extras",
+        "name": "Care Plan",
+        "price": "£30/month",
+        "best_for": "Peace of mind after launch. Or £300 per year",
+        "details": "Fixes for anything that stops working\nUp to 30 minutes of small updates each month (text, photos, prices)\nRegular domain and site checks"
+      },
+      {
+        "group": "Aftercare & extras",
+        "name": "Care Plus Plan",
+        "price": "£55/month",
+        "best_for": "For sites that change often. Or £600 per year",
+        "details": "Everything in the Care Plan\nUp to 2 hours of updates each month\nPriority replies within 2 working days\nA check-up every 3 months"
       }
     ],
     "included": "A free discovery call\nA homepage design to approve before the full build\nMobile-friendly design and fast hosting\nConnection to your domain and Google Search Console\n30 days of free support after launch",
-    "addons": "Domain package (3 years): £95\nMoving from Wix, Squarespace or similar: from £150\nExtra page: £150\nExtra shop products (10): £50\nWebsite copywriting: from £75 per page\nGoogle Business Profile setup: £50\nExtra revision round: £75\nPriority delivery: +25%\nCare plan: £300 per year (or £30 per month)\nCare Plus plan: £600 per year (or £55 per month)\nPay-as-you-go fixes: £45 each",
-    "notes": "Payment providers charge a small fee on each sale, and some shop platforms have a monthly plan. These are paid directly to the provider.\nA 50% deposit secures your start date, with the final 50% due at launch."
+    "addons": "Moving from Wix, Squarespace or similar: from £150\nExtra page: £150\nExtra shop products (10): £50\nWebsite copywriting: from £75 per page\nGoogle Business Profile setup: £50\nExtra revision round: £75\nPriority delivery: +25%\nPay-as-you-go fixes: £45 each",
+    "notes": "Payment providers charge a small fee on each sale, and some shop platforms have a monthly plan. These are paid directly to the provider.\nA 50% deposit secures your start date, with the final 50% due at launch.",
+    "banner": "/media/images/web-design-liora.jpg"
   }
 ]

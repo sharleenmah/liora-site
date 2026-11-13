@@ -57,7 +57,7 @@ function build(D){
     mapImg:t.map_image||"",lat:t.latitude,lon:t.longitude,reviews:[1,2,3].map(function(n){return{text:t["review"+n+"_text"],by:t["review"+n+"_by"]||""}}).filter(function(r){return r.text})}});
   CONTENT.svc=A(D.services,[]).map(function(s){return{name:s.name||"",desc:s.desc||"",price:s.price||"",img:s.img||"",fx:foc(s.focus_x),fy:foc(s.focus_y)}});
   CONTENT.guideUrl=site.guide_pdf||"";
-  CONTENT.pricing=A(D.pricing,[]).map(function(x,i){return{name:x.name||"",slug:String(x.slug||x.name||("s"+i)).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,""),from:x.from||"",intro:paras(x.intro),
+  CONTENT.pricing=A(D.pricing,[]).map(function(x,i){return{name:x.name||"",slug:String(x.slug||x.name||("s"+i)).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,""),from:x.from||"",bn:x.banner||"",intro:paras(x.intro),
     pk:A(x.packages,[]).map(function(p){return{g:p.group||"",n:p.name||"",pr:p.price||"",bf:p.best_for||"",d:lines(p.details)}}),inc:lines(x.included),add:lines(x.addons),notes:lines(x.notes)}});
   CONTENT.faqs=A(D.faqs,[]).filter(function(f){return f&&f.question}).map(function(f){return{c:f.category||"General",q:f.question,a:paras(f.answer)}});
   CONTENT.booking=A(D.booking,[]).filter(function(b){return b&&(b.title||b.text)});
@@ -94,7 +94,7 @@ CONTENT.categories.forEach(function(c){
 /* reviews slideshow */
 var sl=$("slides"),dt=$("dots"),cur=0,timer;
 CONTENT.reviews.forEach(function(r,i){
-  var f=document.createElement("figure");f.innerHTML="<blockquote>"+esc(r.text)+"</blockquote><span class='sm'>"+esc(r.by)+"</span>";sl.appendChild(f);
+  var f=document.createElement("figure");if((r.text||"").length>260)f.className="long";f.innerHTML="<blockquote>"+esc(r.text)+"</blockquote><span class='sm'>"+esc(r.by)+"</span>";sl.appendChild(f);
   var b=document.createElement("button");b.setAttribute("aria-label","Review "+(i+1));b.onclick=function(){go(i);auto()};dt.appendChild(b);
 });
 function go(i){cur=i;var n=sl.children.length;[].forEach.call(sl.children,function(f,k){var o=(k-i+n)%n;f.style.transform=["none","rotate(4deg) translate(22px,16px)","rotate(-4deg) translate(-20px,22px)"][o]||"scale(.9)";f.style.opacity=o==0?1:o<3?.5:0;f.style.zIndex=n-o});[].forEach.call(dt.children,function(b,k){b.classList.toggle("on",k==i)})}
@@ -210,7 +210,7 @@ pw.addEventListener("pointerup",function(){dr=null;setTimeout(function(){dragMov
 /* expanding project panel */
 var pj=$("pj"),pjc=null,pjT=null;
 function rectClip(c){var r=c.getBoundingClientRect();return"inset("+r.top+"px "+(innerWidth-r.right)+"px "+(innerHeight-r.bottom)+"px "+r.left+"px round 6px)"}
-function openPanel(c,html,cb){$("pji").innerHTML=html;pj.style.transition="none";pj.style.clipPath=rectClip(c);pj.classList.add("on");pj.scrollTop=0;document.body.classList.add("lock");pjc=c;
+function openPanel(c,html,cb){$("pji").innerHTML=html;titleCase($("pji"));pj.style.transition="none";pj.style.clipPath=rectClip(c);pj.classList.add("on");pj.scrollTop=0;document.body.classList.add("lock");pjc=c;
   void pj.offsetWidth;pj.style.transition="clip-path .7s cubic-bezier(.7,0,.2,1)";pj.style.clipPath="inset(0 0 0 0 round 0)";if(cb)cb()}
 function closePanel(){if(!pjc)return;clearInterval(pjT);pjTs.forEach(clearInterval);pj.style.clipPath=rectClip(pjc);var c=pjc;pjc=null;setTimeout(function(){pj.classList.remove("on");document.body.classList.remove("lock")},700)}
 function ssHTML(imgs){return'<div class="pss">'+imgs.map(function(s,i){return'<img'+(i==0?' class="on"':'')+' src="'+String(s).replace(/"/g,"%22")+'" alt="" decoding="async" loading="lazy">'}).join("")+'</div>'}
@@ -252,18 +252,33 @@ function spOn(p){[].forEach.call(document.querySelectorAll("#sv2 .sp"),function(
 /* pricing page (all text and prices come from content/pricing.json) */
 (function(){var P=CONTENT.pricing;if(!$("prc"))return;
  function li(a){return a.map(function(x){var k=x.indexOf(": ");return"<li>"+(k>0&&k<40?"<b>"+esc(x.slice(0,k))+":</b>"+esc(x.slice(k+1)):esc(x))+"</li>"}).join("")}
- function card(p){return'<article class="pk"><p class="sm pn">'+esc(p.n.toUpperCase())+'</p><p class="pp"><small>from</small> '+esc(p.pr)+'</p>'+(p.bf?'<p class="pb">'+esc(p.bf)+'</p>':'')+'<ul>'+p.d.map(function(d){return"<li>"+esc(d)+"</li>"}).join("")+'</ul></article>'}
+ function card(p,i){return'<article class="pk rvx" style="--d:'+(i%4)*90+'ms"><p class="sm pn">'+esc(p.n.toUpperCase())+'</p><p class="pp"><small>from</small> <b class="cu">'+esc(p.pr)+'</b></p>'+(p.bf?'<p class="pb">'+esc(p.bf)+'</p>':'')+'<ul>'+p.d.map(function(d){return"<li>"+esc(d)+"</li>"}).join("")+'</ul></article>'}
  function cards(pk){var groups=[],seen={};pk.forEach(function(p){if(!(p.g in seen)){seen[p.g]=groups.length;groups.push({g:p.g,a:[]})}groups[seen[p.g]].a.push(p)});
-  return groups.map(function(g){return(g.g?'<h3 class="pg">'+esc(g.g)+'</h3>':'')+'<div class="pks">'+g.a.map(card).join("")+'</div>'}).join("")}
+  return groups.map(function(g){return(g.g?'<h3 class="pg">'+esc(g.g)+'</h3>':'')+'<div class="pks">'+g.a.map(function(p,i){return card(p,i)}).join("")+'</div>'}).join("")}
  $("prc").innerHTML='<div class="ic"></div><h1>PRICING</h1>'+(CONTENT.ptext.intro?'<p class="pi">'+esc(CONTENT.ptext.intro)+'</p>':'')
+  +'<div class="mq thin" aria-hidden="true"><div>'+[0,1,2,3].map(function(){return'<span>'+P.map(function(s){return esc(s.name.replace(/ (Photography|Design|Editing)$/,"").replace(/^Social Media /,""))}).join(" ✦ ")+' ✦ </span>'}).join("")+'</div></div>'
   +'<nav class="pnav sm" aria-label="Services">'+P.map(function(s){return'<a href="/pricing#p-'+s.slug+'">'+esc(s.name.toUpperCase())+'</a>'}).join("")+(CONTENT.bundles.length?'<a href="/pricing#p-bundles">BUNDLES</a>':'')+'</nav>'
-  +P.map(function(s,i){return'<section class="ps" id="p-'+s.slug+'"><header><span class="sm" style="color:var(--yel)">'+pad(i+1)+'</span><h2>'+esc(s.name)+'</h2>'+(s.from?'<p class="sm pf2">FROM <b>'+esc(s.from)+'</b></p>':'')+'</header>'
-   +s.intro.map(function(x){return'<p class="pin">'+esc(x)+'</p>'}).join("")+cards(s.pk)
-   +'<div class="pex">'+(s.inc.length?'<div><p class="sm">INCLUDED</p><ul>'+li(s.inc)+'</ul></div>':'')+(s.add.length?'<div><p class="sm">ADD-ONS</p><ul>'+li(s.add)+'</ul></div>':'')+(s.notes.length?'<div><p class="sm">GOOD TO KNOW</p><ul>'+li(s.notes)+'</ul></div>':'')+'</div>'
+  +P.map(function(s,i){return'<section class="ps" id="p-'+s.slug+'">'+(s.bn?'<div class="pbn rvx">'+(/\.(mp4|webm|mov)$/i.test(s.bn)?'<video src="'+s.bn+'" autoplay muted loop playsinline></video>':'<i style="background-image:url(\''+String(s.bn).replace(/'/g,"%27")+'\')"></i>')+'<span class="sm">'+pad(i+1)+' / '+esc(s.name.toUpperCase())+'</span></div>':'')+'<header class="rvx"><span class="sm" style="color:var(--yel)">'+pad(i+1)+'</span><h2>'+esc(s.name)+'</h2>'+(s.from?'<p class="sm pf2">FROM <b>'+esc(s.from)+'</b></p>':'')+'</header>'
+   +s.intro.map(function(x){return'<p class="pin rvx">'+esc(x)+'</p>'}).join("")+cards(s.pk)
+   +'<div class="pex">'+(s.inc.length?'<div class="rvx"><p class="sm">INCLUDED</p><ul>'+li(s.inc)+'</ul></div>':'')+(s.add.length?'<div class="rvx" style="--d:90ms"><p class="sm">ADD-ONS</p><ul>'+li(s.add)+'</ul></div>':'')+(s.notes.length?'<div class="rvx" style="--d:180ms"><p class="sm">GOOD TO KNOW</p><ul>'+li(s.notes)+'</ul></div>':'')+'</div>'
    +'<a class="btn sm" href="/#enquire" data-pq="'+esc(s.name)+'">ENQUIRE ABOUT '+esc(s.name.toUpperCase())+'</a></section>'}).join("")
-  +(CONTENT.bundles.length?'<section class="ps bun" id="p-bundles"><header><span class="sm" style="color:var(--yel)">+</span><h2>Bundles</h2></header><p class="pin">Book more than one service together and everything is designed to belong together, with 10% off the photography or design when booked alongside a website.</p><div class="pks">'+CONTENT.bundles.map(function(b){return'<article class="pk"><p class="sm pn">'+esc(b.name.toUpperCase())+'</p><p class="pp">'+esc(b.price||"")+'</p><p class="pb">'+esc(b.desc||"")+'</p></article>'}).join("")+'</div></section>':'')
+  +(CONTENT.bundles.length?'<section class="ps bun" id="p-bundles"><header><span class="sm" style="color:var(--yel)">+</span><h2>Bundles</h2></header><p class="pin">Book more than one service together and everything is designed to belong together, with 10% off the photography or design when booked alongside a website.</p><div class="pks">'+CONTENT.bundles.map(function(b,i){return'<article class="pk rvx" style="--d:'+i*90+'ms"><p class="sm pn">'+esc(b.name.toUpperCase())+'</p><p class="pp">'+esc(b.price||"")+'</p><p class="pb">'+esc(b.desc||"")+'</p></article>'}).join("")+'</div></section>':'')
   +'<div class="guide"><h2>Got a question?</h2><p>Find answers about booking, delivery and payments in the FAQs, or read the full terms for each service.</p><div class="gbt"><a class="btn sm" href="/faqs">READ THE FAQS</a><a class="btn sm ghost" href="/ts-cs">TERMS &amp; CONDITIONS</a><button class="btn sm ghost" type="button" id="pdf">SAVE AS PDF</button></div></div>';
  var pb=$("pdf");if(pb)pb.addEventListener("click",function(){window.print()});
+ /* motion: reveal on scroll, price count-up, active nav pill, banner parallax, card tilt */
+ var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+ function countUp(el){var t=el.textContent,m=t.match(/[\d,]+(\.\d+)?/);if(!m||reduce||el._done)return;el._done=1;var end=parseFloat(m[0].replace(/,/g,"")),pre=t.slice(0,m.index),post=t.slice(m.index+m[0].length),t0=null;
+  function f(ts){if(!t0)t0=ts;var k=Math.min(1,(ts-t0)/900),v=Math.round(end*(1-Math.pow(1-k,3)));el.textContent=pre+v.toLocaleString("en-GB")+post;if(k<1)requestAnimationFrame(f)}requestAnimationFrame(f)}
+ if("IntersectionObserver" in window&&!reduce){var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");var c=e.target.querySelector(".cu");if(c)setTimeout(function(){countUp(c)},parseInt(e.target.style.getPropertyValue("--d"))||0);ro.unobserve(e.target)}})},{rootMargin:"0px 0px -8% 0px"});
+  [].forEach.call($("prc").querySelectorAll(".rvx"),function(el){ro.observe(el)});
+  var links={};[].forEach.call($("prc").querySelectorAll(".pnav a"),function(a){links[a.getAttribute("href").split("#")[1]]=a});
+  var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){for(var k in links)links[k].classList.toggle("on",k==e.target.id);var a=links[e.target.id];if(a&&a.parentNode.scrollWidth>a.parentNode.clientWidth)a.parentNode.scrollTo({left:a.offsetLeft-20,behavior:"smooth"})}})},{rootMargin:"-45% 0px -50% 0px"});
+  [].forEach.call($("prc").querySelectorAll(".ps"),function(x){so.observe(x)})}
+ else [].forEach.call($("prc").querySelectorAll(".rvx"),function(el){el.classList.add("in")});
+ var bns=$("prc").querySelectorAll(".pbn>i,.pbn>video");
+ addEventListener("scroll",function(){if(cv!="prc"||reduce)return;var h=innerHeight;[].forEach.call(bns,function(b){var r=b.parentNode.getBoundingClientRect();if(r.bottom<0||r.top>h)return;b.style.transform="translateY("+((r.top+r.height/2-h/2)*-.12).toFixed(1)+"px) scale(1.18)"})},{passive:true});
+ if(matchMedia("(hover:hover) and (pointer:fine)").matches&&!reduce)$("prc").addEventListener("pointermove",function(e){var c=e.target.closest(".pk");[].forEach.call($("prc").querySelectorAll(".pk.tlt"),function(x){if(x!=c){x.classList.remove("tlt");x.style.transform=""}});if(!c)return;
+  var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.classList.add("tlt");c.style.transform="perspective(900px) rotateX("+(-y*6).toFixed(2)+"deg) rotateY("+(x*6).toFixed(2)+"deg) translateY(-6px)"});
  document.addEventListener("click",function(e){var a=e.target.closest("[data-pq]");if(!a)return;var sel=document.querySelector("#f select[name=service]");if(!sel)return;var n=a.getAttribute("data-pq").toLowerCase().replace(/&amp;/g,"&");
   [].some.call(sel.options,function(o){var v=o.value.toLowerCase();if(v&&(v==n||v.indexOf(n)==0||n.indexOf(v)==0||(/web/.test(n)&&/web/.test(v))||(/design/.test(n)&&/poster/.test(v)))){sel.value=o.value;return true}})},true);
 })();
@@ -306,6 +321,16 @@ addEventListener("pointermove",function(e){tx=e.clientX;ty=e.clientY});
 document.addEventListener("pointerover",function(e){L.classList.toggle("big",!!e.target.closest("a,button"))});
 
 /* open the page the URL points to */
+/* title case for headings: capitalise main words, keep small words lower case */
+var SMALL={a:1,an:1,and:1,as:1,at:1,but:1,by:1,for:1,"in":1,nor:1,of:1,on:1,or:1,per:1,so:1,the:1,to:1,up:1,via:1,vs:1,with:1,yet:1,from:1,into:1,"&":1};
+function tcase(t){var w=t.split(/(\s+)/),words=w.filter(function(x){return x.trim()}),n=0,last=words.length;
+ return w.map(function(x){if(!x.trim())return x;n++;return x.split("-").map(function(p,j){var core=p.replace(/^[^A-Za-z\u00C0-\u024F]+/,""),lead=p.slice(0,p.length-core.length);if(!core)return p;
+  if(/[A-Z]/.test(core.slice(1))||/^[A-Z]/.test(core))return p;var lw=core.toLowerCase().replace(/[^a-z&]/g,"");
+  if(SMALL[lw]&&n!=1&&n!=last&&j==0)return p;return lead+core.charAt(0).toUpperCase()+core.slice(1)}).join("-")}).join("")}
+function titleCase(root){[].forEach.call((root||document).querySelectorAll("main h1,main h2,main h3,#pji h2,#pji h3,.pg"),function(h){if(h.children.length&&h.querySelector("*:not(br):not(i):not(span)"))return;
+var walker=document.createTreeWalker(h,NodeFilter.SHOW_TEXT),tn,txt=h.textContent.trim();if(!txt||txt.split(/\s+/).length>8||txt==txt.toUpperCase())return;
+ while(tn=walker.nextNode())tn.nodeValue=tcase(tn.nodeValue)})}
+titleCase();
 show(location.pathname,location.hash);
 }
 })();
