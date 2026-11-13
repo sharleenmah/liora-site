@@ -1,0 +1,300 @@
+[
+  {
+    "name": "Portrait Photography",
+    "slug": "portrait",
+    "from": "£100",
+    "intro": "My portrait photography is all about authenticity. Whether you need professional headshots, creative editorial portraits or personal images for a special moment, I create a relaxed environment where your personality can shine through. Each session is tailored to your style, from bold and creative to soft and natural.\n\nThese packages are for shoots on location. For studio shoots, see Studio Portrait Photography below.",
+    "packages": [
+      {
+        "name": "Basic",
+        "price": "£100",
+        "best_for": "Headshots, profile photos and quick personal shoots",
+        "details": "1 hour\n10 edited photos\n1 location"
+      },
+      {
+        "name": "Standard",
+        "price": "£150",
+        "best_for": "Personal branding, couples and creative portraits",
+        "details": "2 hours\n20 edited photos\nUp to 2 locations in the same city"
+      },
+      {
+        "name": "Premium",
+        "price": "£200",
+        "best_for": "Editorial shoots, families and full brand content days",
+        "details": "3 hours\n30 edited photos\nUnlimited locations in the same city"
+      }
+    ],
+    "included": "A short planning chat about your style, outfits and locations\nGentle direction and posing guidance throughout your shoot\nProfessional editing of every delivered image\nYour images delivered by a secure download link\nDelivery within 3–10 working days\nA personal usage licence for all your images",
+    "addons": "24-hour express delivery: your gallery within one day of your shoot\nExtra edited images: add more photos from your session to your gallery\nCommercial usage licence: for images used in advertising or paid campaigns",
+    "notes": "Add-on prices are confirmed in your quote.\nTravel outside Bristol is quoted separately."
+  },
+  {
+    "name": "Studio Portrait Photography",
+    "slug": "studio",
+    "from": "£200",
+    "intro": "A professional photography studio gives you clean backdrops, controlled lighting and a polished, editorial finish. Studio sessions are ideal for headshots, personal branding, couples and creative portraits, whatever the weather.\n\nStudio hire is included in every studio package.",
+    "packages": [
+      {
+        "name": "Basic",
+        "price": "£200",
+        "best_for": "Headshots and profile photos",
+        "details": "1 hour\n10 edited photos\nPhotography studio, hire included"
+      },
+      {
+        "name": "Standard",
+        "price": "£250",
+        "best_for": "Personal branding, couples and creative portraits",
+        "details": "2 hours\n20 edited photos\nPhotography studio, hire included"
+      },
+      {
+        "name": "Premium",
+        "price": "£300",
+        "best_for": "Editorial shoots and full brand content days",
+        "details": "3 hours\n30 edited photos\nPhotography studio, hire included"
+      }
+    ],
+    "included": "A short planning chat about your style, outfits and set-up\nStudio hire for the length of your session\nGentle direction and posing guidance throughout your shoot\nProfessional editing of every delivered image\nYour images delivered by a secure download link\nDelivery within 3–10 working days",
+    "addons": "24-hour express delivery: your gallery within one day of your shoot\nExtra edited images: add more photos from your session to your gallery\nCommercial usage licence: for images used in advertising or paid campaigns",
+    "notes": "Studio sessions cancelled or rescheduled with less than 5 working days’ notice lose their deposit, as the studio is booked in advance."
+  },
+  {
+    "name": "Event Photography",
+    "slug": "event",
+    "from": "£275",
+    "intro": "Events move quickly, and the moments that make them special often unfold quietly: a shared laugh, a proud milestone, a room full of energy. I document them with discretion, creativity and care, so you can stay present while I preserve the memories. I cover red carpet premieres, corporate functions, concerts, birthdays, baby showers and cultural gatherings.",
+    "packages": [
+      {
+        "name": "Basic",
+        "price": "£275",
+        "best_for": "Short events, launches and parties",
+        "details": "Up to 3 hours\n40 edited photos\n1 location"
+      },
+      {
+        "name": "Basic Half Day",
+        "price": "£350",
+        "best_for": "Celebrations and smaller corporate events",
+        "details": "Half day (6 hours)\n75 edited photos\n1 location"
+      },
+      {
+        "name": "Standard Half Day",
+        "price": "£400",
+        "best_for": "Events across two venues",
+        "details": "Half day (6 hours)\n90 edited photos\nUp to 2 locations in the same city"
+      },
+      {
+        "name": "Standard Full Day",
+        "price": "£500",
+        "best_for": "Conferences and all-day celebrations",
+        "details": "Full day (12 hours)\n120 edited photos\nUp to 2 locations in the same city"
+      },
+      {
+        "name": "Premium Half Day",
+        "price": "£550",
+        "best_for": "Larger events with multiple spaces",
+        "details": "Half day (6 hours)\n100 edited photos\nUnlimited locations in the same city"
+      },
+      {
+        "name": "Premium Full Day",
+        "price": "£650",
+        "best_for": "Full productions and multi-venue events",
+        "details": "Full day (12 hours)\n150 edited photos\nUnlimited locations in the same city"
+      }
+    ],
+    "included": "A pre-event call to plan key moments, people and shot lists\nDiscreet, documentary-style coverage with posed group shots where needed\nProfessional editing that keeps the atmosphere natural\nYour images delivered by a secure download link\nDelivery within 7–21 working days",
+    "addons": "Extra hours of coverage: for events that run longer than planned\nExpress highlights: a small set of edited images within 48 hours of your event, ready for social media\nExtra edited images: more photos added to your gallery\nCommercial usage licence: for images used in advertising or paid campaigns",
+    "notes": "Travel and accommodation outside Bristol are quoted separately, based on your location and dates."
+  },
+  {
+    "name": "Wedding Photography",
+    "slug": "wedding",
+    "from": "£300",
+    "intro": "Your wedding day is full of moments you’ll want to relive: the nerves before the ceremony, the quiet glances, the dance floor at midnight. I capture it all with elegant, candid coverage and professional editing, so you can be fully present on the day. Coverage is available in the UK and abroad.",
+    "packages": [
+      {
+        "name": "Engagement Shoots",
+        "price": "£300",
+        "best_for": "Engagements and pre-wedding shoots",
+        "details": "Up to 2 hours · 20 edited photos · 1 location\nHalf day · 30 edited photos · 2 locations\nHalf day · 50 edited photos · unlimited locations\n2-hour studio shoot · 25 edited photos\n3-hour studio shoot · 40 edited photos"
+      },
+      {
+        "name": "Civil, Elopement & Registry",
+        "price": "£450",
+        "best_for": "Intimate ceremonies",
+        "details": "Half day · 50 edited photos · 1 location\nHalf day · 75 edited photos · up to 2 locations\nHalf day · 120 edited photos · unlimited locations\nHalf day · 150 edited photos · unlimited locations + hardcover photo book"
+      },
+      {
+        "name": "Domestic Weddings",
+        "price": "£650",
+        "best_for": "Weddings across the UK",
+        "details": "Half day · 70 edited photos · up to 2 locations\nHalf day · 100 edited photos · unlimited locations\nFull day · 150 edited photos · up to 3 locations + hardcover photo book\nFull day · 250 edited photos · unlimited locations + hardcover photo book"
+      },
+      {
+        "name": "International Weddings",
+        "price": "£1,250",
+        "best_for": "Destination weddings",
+        "details": "EU · full day · 150 edited photos · up to 3 locations\nEU · full day · 250 edited photos · unlimited locations\nOutside the EU · full day · 150 edited photos · up to 3 locations\nOutside the EU · full day · 250 edited photos · unlimited locations"
+      }
+    ],
+    "included": "A planning call to map out your timeline, locations and must-have shots\nUp to 90 minutes of pre-ceremony coverage (not included for reception-only bookings)\nA sneak peek of edited images within 72 hours\nYour images delivered by a secure download link\nYour full gallery within 6 weeks\nA complimentary luxe hardcover photo book with full-day packages, delivered within 4 weeks of your final images",
+    "addons": "",
+    "notes": "Half-day coverage is 6 hours, usually pre-ceremony, ceremony and drinks reception, or the evening reception.\nFull-day coverage is 12 hours, including the 90 minutes of pre-ceremony coverage.\nFor weddings abroad, flights and accommodation are quoted separately. Extra days of coverage are charged at event photography rates.\nAll locations are within the same city unless agreed otherwise."
+  },
+  {
+    "name": "Graphic Design",
+    "slug": "design",
+    "from": "£60",
+    "intro": "From posters and promotional material to wedding stationery, magazines and brand identities, I create print and digital designs that balance creativity with clarity. Every project starts with a consultation and moodboard, then moves through drafts and revisions until you have polished, print-ready files.",
+    "packages": [
+      {
+        "name": "Event Posters & Flyers",
+        "price": "£60",
+        "best_for": "Parties, launches and social events",
+        "details": "One poster design\n1 concept + 2 revisions\nPrint-ready and digital files",
+        "group": "Posters"
+      },
+      {
+        "name": "Creative Posters",
+        "price": "£100",
+        "best_for": "Editorials, campaigns and personal projects",
+        "details": "Fully custom, concept-led design\nMoodboard, 1–2 concepts + revisions\nHigh-resolution print and digital files",
+        "group": "Posters"
+      },
+      {
+        "name": "Basic",
+        "price": "£80",
+        "best_for": "Flyers, leaflets and invites",
+        "details": "Single or small-format design\nUp to 2 pages or sides\nPrint-ready files",
+        "group": "Printed material"
+      },
+      {
+        "name": "Standard",
+        "price": "£200",
+        "best_for": "Brochures and small magazines",
+        "details": "Up to 6 pages\nLayout design + visual direction\nPrint-ready and digital files",
+        "group": "Printed material"
+      },
+      {
+        "name": "Premium",
+        "price": "£450",
+        "best_for": "Editorial magazines and large brochures",
+        "details": "10+ pages\nFull layout design + creative direction\nPublication-ready finish",
+        "group": "Printed material"
+      },
+      {
+        "name": "Basic",
+        "price": "£65",
+        "best_for": "A single save the date or invitation",
+        "details": "1 concept + up to 2 revisions\nPrint-ready digital files",
+        "group": "Wedding stationery"
+      },
+      {
+        "name": "Standard",
+        "price": "£150",
+        "best_for": "Save the date + invitation suite",
+        "details": "RSVP card design\nOne consistent theme across all items\nPrint-ready files",
+        "group": "Wedding stationery"
+      },
+      {
+        "name": "Premium",
+        "price": "£300",
+        "best_for": "Your full wedding stationery suite",
+        "details": "Save the date, invitations, RSVP and details card\nOn-the-day stationery: menus, place cards, signage\nPrint-ready and digital versions",
+        "group": "Wedding stationery"
+      },
+      {
+        "name": "Basic Branding",
+        "price": "£150",
+        "best_for": "New businesses and personal brands",
+        "details": "Primary logo\nColour palette\nTypography selection",
+        "group": "Branding"
+      },
+      {
+        "name": "Secondary Brand Identity",
+        "price": "£300",
+        "best_for": "Growing brands",
+        "details": "Primary and secondary logos\nColour and type system\nSocial media assets\nBrand guidelines and logo mockups",
+        "group": "Branding"
+      },
+      {
+        "name": "Full Brand Identity",
+        "price": "£550",
+        "best_for": "Launches and full rebrands",
+        "details": "Full logo suite and detailed brand guidelines\nSocial media templates and print assets\nProduct mockups and launch graphics\nPackaging design",
+        "group": "Branding"
+      }
+    ],
+    "included": "An initial consultation to understand your vision\nA moodboard and design direction before any drafts\nThe revision rounds listed in your package\nFinal files in print-ready and digital formats (PDF, PNG or JPEG)",
+    "addons": "Printing: arranged for you at an extra cost\nEditable source files (PSD, AI, INDD): available on request",
+    "notes": "Revisions must be requested within 7 days of receiving each draft."
+  },
+  {
+    "name": "Social Media Video Editing",
+    "slug": "video",
+    "from": "£60",
+    "intro": "Short-form content takes time, not just to edit but to get right. Pacing, captions, sound and transitions all shape how your video performs. I tailor every edit to your style, so it holds attention and is ready to post on Instagram, TikTok or YouTube.",
+    "packages": [
+      {
+        "name": "Essential Edit",
+        "price": "£60",
+        "best_for": "Simple talking-head or single-camera videos",
+        "details": "60–90 seconds\nClean cuts and pacing\nBasic transitions\nLight colour correction\nClean static captions"
+      },
+      {
+        "name": "Content Edit",
+        "price": "£95",
+        "best_for": "Talking-head videos with more structure",
+        "details": "Up to 2 minutes\nMixed transitions (zooms, speed ramps)\nStyled captions with highlighted keywords\nLight sound effects and refined colour grading\nB-roll overlays"
+      },
+      {
+        "name": "Creator Edit",
+        "price": "£130",
+        "best_for": "Vlogs and multi-clip storytelling",
+        "details": "2–3 minutes\nAdvanced pacing and sequencing\nMatch cuts and seamless transitions\nDynamic captions\nMusic and sound effect layering, colour grading*"
+      },
+      {
+        "name": "Premium Edit",
+        "price": "£180",
+        "best_for": "High-production content",
+        "details": "2–3 minutes+\nMasking and morphing transitions\nAnimated captions and motion graphics\nFull sound design, cinematic colour grading*\nCover design"
+      }
+    ],
+    "included": "A short brief so I understand how you want your content to feel\nRevisions: one round for Essential and Content edits, two for Creator and Premium\nFinal videos exported for your chosen platforms",
+    "addons": "",
+    "notes": "*Colour grading on these packages needs footage recorded in Log format.\nYou supply all footage, audio and assets. Filming isn’t included unless agreed separately.\nYou’re responsible for having the rights to any music you provide. Any music I source is royalty-free or licensed.\nProject files aren’t included unless requested, and may incur an extra fee."
+  },
+  {
+    "name": "Web Design",
+    "slug": "web",
+    "from": "£650",
+    "intro": "Every website is designed from scratch, built to load fast and handed over so it’s fully yours. You own your site, domain and content, there are no monthly platform fees for most sites, and every site comes with a simple editor so you can update photos, prices and projects yourself.",
+    "packages": [
+      {
+        "name": "Essential",
+        "price": "£650",
+        "best_for": "Freelancers, events and launches",
+        "details": "1 scrolling page, up to 6 sections\nContact form and social links\nSimple editor for text and images\nBasic search setup\n2 revision rounds\nAround 3 weeks"
+      },
+      {
+        "name": "Signature",
+        "price": "£1,500",
+        "best_for": "Creatives and small businesses",
+        "details": "Up to 5 pages\nPortfolio galleries with full-screen viewing\nServices page linked to your enquiry form\nEditor for every section\n3 revision rounds\n3–4 weeks"
+      },
+      {
+        "name": "Studio",
+        "price": "£2,500",
+        "best_for": "Brands that want a fully bespoke experience",
+        "details": "Up to 10 pages\nBespoke interactions and animations\nReusable project page templates\nLive 1-hour handover session\n3 revision rounds\n4–6 weeks"
+      },
+      {
+        "name": "Shop",
+        "price": "£2,800",
+        "best_for": "Selling products, prints, bookings or deposits",
+        "details": "Signature site + online shop\nUp to 20 products or services\nSecure card payments via Stripe or Shopify\nOrder emails, delivery or collection options\n3 revision rounds\n5–7 weeks"
+      }
+    ],
+    "included": "A free discovery call\nA homepage design to approve before the full build\nMobile-friendly design and fast hosting\nConnection to your domain and Google Search Console\n30 days of free support after launch",
+    "addons": "Domain package (3 years): £95\nMoving from Wix, Squarespace or similar: from £150\nExtra page: £150\nExtra shop products (10): £50\nWebsite copywriting: from £75 per page\nGoogle Business Profile setup: £50\nExtra revision round: £75\nPriority delivery: +25%\nCare plan: £300 per year (or £30 per month)\nCare Plus plan: £600 per year (or £55 per month)\nPay-as-you-go fixes: £45 each",
+    "notes": "Payment providers charge a small fee on each sale, and some shop platforms have a monthly plan. These are paid directly to the provider.\nA 50% deposit secures your start date, with the final 50% due at launch."
+  }
+]

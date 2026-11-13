@@ -172,7 +172,7 @@ content:
         type: number
         label: "Phone photo focus – up/down (0 = top, 50 = centre, 100 = bottom)"
   - name: pages
-    label: "Page text (portrait, event, design)"
+    label: "Page text (portrait, event, design, pricing, FAQs)"
     type: file
     path: content/pages.json
     format: json
@@ -198,6 +198,15 @@ content:
       - name: design_tagline
         type: string
         label: "Graphic design page – slogan"
+      - name: pricing_intro
+        type: text
+        label: "Pricing page – intro"
+      - name: booking_heading
+        type: string
+        label: "Services page – booking process heading"
+      - name: faq_intro
+        type: text
+        label: "FAQs page – intro"
       - name: itinerary_text
         type: text
         label: "Graphic design page – travel itinerary design text"
@@ -514,6 +523,10 @@ content:
         type: string
         label: "Price button text"
         description: "e.g. FROM £100"
+      - name: link
+        type: string
+        label: "Price button link (optional)"
+        description: "Leave empty to jump to this service on the pricing page automatically."
       - name: img
         type: image
         label: "Background photo"
@@ -615,6 +628,110 @@ content:
       - name: link
         type: string
         label: "Link to the post"
+  - name: pricing
+    label: "Pricing page – services & packages"
+    type: file
+    path: content/pricing.json
+    format: json
+    list: true
+    fields:
+      - name: name
+        type: string
+        label: "Service name"
+      - name: slug
+        type: string
+        label: "Link name"
+        description: "Short, lowercase, no spaces (e.g. portrait). Services page buttons use it to jump to this section."
+      - name: from
+        type: string
+        label: "Starting price"
+        description: "e.g. £100"
+      - name: intro
+        type: text
+        label: "Intro"
+        description: "Leave a blank line between paragraphs."
+      - name: packages
+        type: object
+        list: true
+        label: "Packages"
+        fields:
+          - name: group
+            type: string
+            label: "Group (optional)"
+            description: "Packages with the same group are shown together under that heading, e.g. Branding."
+          - name: name
+            type: string
+            label: "Package name"
+          - name: price
+            type: string
+            label: "Price"
+            description: "e.g. £150 (shown as 'from £150')"
+          - name: best_for
+            type: string
+            label: "Best for"
+          - name: details
+            type: text
+            label: "What's included"
+            description: "One item per line."
+      - name: included
+        type: text
+        label: "Included with every booking"
+        description: "One item per line."
+      - name: addons
+        type: text
+        label: "Add-ons"
+        description: "One per line. Put the add-on name before a colon to make it bold, e.g. Extra hour: for events that run long"
+      - name: notes
+        type: text
+        label: "Good to know"
+        description: "One item per line."
+  - name: bundles
+    label: "Pricing page – bundles"
+    type: file
+    path: content/bundles.json
+    format: json
+    list: true
+    fields:
+      - name: name
+        type: string
+        label: "Bundle name"
+      - name: price
+        type: string
+        label: "Price"
+        description: "e.g. from £725"
+      - name: desc
+        type: string
+        label: "What's included"
+  - name: booking
+    label: "Services page – booking process steps"
+    type: file
+    path: content/booking.json
+    format: json
+    list: true
+    fields:
+      - name: title
+        type: string
+        label: "Step title"
+      - name: text
+        type: text
+        label: "Step description"
+  - name: faqs
+    label: "FAQs"
+    type: file
+    path: content/faqs.json
+    format: json
+    list: true
+    fields:
+      - name: category
+        type: string
+        label: "Category"
+        description: "Questions with the same category are grouped together, e.g. Web design."
+      - name: question
+        type: string
+        label: "Question"
+      - name: answer
+        type: text
+        label: "Answer"
   - name: terms
     label: "Terms & Conditions"
     type: file

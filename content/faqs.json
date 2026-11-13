@@ -1,0 +1,117 @@
+[
+  {
+    "category": "Booking & payments",
+    "question": "How do I book?",
+    "answer": "Send an enquiry through the booking form or by email with your preferred date, location and service. I’ll confirm my availability, send a contract and invoice, and your booking is secured once the signed contract and deposit are received."
+  },
+  {
+    "category": "Booking & payments",
+    "question": "How much is the deposit?",
+    "answer": "A 30% non-refundable deposit secures photography, design and video bookings. Websites need a 50% deposit, with the final 50% due at launch."
+  },
+  {
+    "category": "Booking & payments",
+    "question": "When is the rest of the payment due?",
+    "answer": "For photography, the remaining balance is due no later than 24 hours after your shoot or event. For design and video, it’s due 48 hours after delivery, and final files are released once payment is received."
+  },
+  {
+    "category": "Booking & payments",
+    "question": "How can I pay?",
+    "answer": "By bank transfer, cash, approved payment card or any other method agreed in advance."
+  },
+  {
+    "category": "Booking & payments",
+    "question": "Can I cancel within 14 days?",
+    "answer": "Under the UK Consumer Contracts Regulations 2013, you may cancel within 14 days of signing your contract, unless your shoot or project takes place within that period. Full details are in the Terms & Conditions."
+  },
+  {
+    "category": "Photography",
+    "question": "Do you provide unedited or RAW images?",
+    "answer": "No. Only professionally edited and curated images are delivered, to keep the quality and style consistent."
+  },
+  {
+    "category": "Photography",
+    "question": "How will I receive my photos?",
+    "answer": "Your edited images are delivered by a secure download link. Hardcover wedding photo books are sent by post."
+  },
+  {
+    "category": "Photography",
+    "question": "How long until I get my photos?",
+    "answer": "Portraits are delivered within 3–10 working days and events within 7–21 working days. Weddings get a sneak peek within 72 hours and the full gallery within 6 weeks. 24-hour express delivery is available for portrait sessions."
+  },
+  {
+    "category": "Photography",
+    "question": "Can I request extra edits or images?",
+    "answer": "Yes. Additional images or edits can be arranged for an added fee, depending on the scope."
+  },
+  {
+    "category": "Photography",
+    "question": "Can I book a shoot with less than 48 hours’ notice?",
+    "answer": "Occasionally, depending on availability. A rush fee may apply to cover transport and/or studio time."
+  },
+  {
+    "category": "Photography",
+    "question": "What happens if I need to reschedule?",
+    "answer": "Rescheduling may be possible with at least 48 hours’ notice, or 5 working days for studio sessions, subject to availability. Your 30% deposit is non-refundable."
+  },
+  {
+    "category": "Photography",
+    "question": "Are travel and accommodation included?",
+    "answer": "No. Travel outside Bristol, and accommodation for multi-day events or weddings abroad, are quoted separately based on your location and dates."
+  },
+  {
+    "category": "Photography",
+    "question": "What’s the difference between studio and location portraits?",
+    "answer": "Studio sessions take place in a professional photography studio with controlled lighting and clean backdrops, and include studio hire. Location sessions happen outdoors or at a venue of your choice."
+  },
+  {
+    "category": "Weddings",
+    "question": "What’s the difference between half-day and full-day coverage?",
+    "answer": "Half-day coverage is 6 hours and full-day coverage is 12 hours. For weddings, the 90 minutes of pre-ceremony coverage are included in these times."
+  },
+  {
+    "category": "Weddings",
+    "question": "Do you photograph weddings abroad?",
+    "answer": "Yes. International packages start from £1,250, with flights and accommodation quoted separately. Extra days of coverage are charged at event photography rates."
+  },
+  {
+    "category": "Graphic design",
+    "question": "Do you print the designs?",
+    "answer": "Printing isn’t included, but I can arrange it for you at an extra cost. Otherwise you receive print-ready files to take to your chosen printer."
+  },
+  {
+    "category": "Graphic design",
+    "question": "Will I get the editable source files?",
+    "answer": "Final designs come as PDF, PNG or JPEG files. Editable source files (PSD, AI, INDD) are available on request for an extra fee."
+  },
+  {
+    "category": "Video editing",
+    "question": "Do you film the content too?",
+    "answer": "Video editing packages cover editing only. You supply the footage, audio and assets, unless filming has been agreed separately."
+  },
+  {
+    "category": "Web design",
+    "question": "Do I have to pay monthly for my website?",
+    "answer": "No. Most sites cost nothing to host. Your only regular cost is your domain renewal, usually around £10–£20 a year. Shop websites may have payment fees, and care plans are optional."
+  },
+  {
+    "category": "Web design",
+    "question": "Can I update my website myself?",
+    "answer": "Yes. Every website comes with a simple editor, so you can change text, swap photos, add new projects and update prices without any coding."
+  },
+  {
+    "category": "Web design",
+    "question": "Who owns my website?",
+    "answer": "You do. Once the final payment is made, your website, content and domain are yours, with accounts set up in your name wherever possible."
+  },
+  {
+    "category": "Web design",
+    "question": "Can I make changes after my website launches?",
+    "answer": "Yes. Every website includes 30 days of free support. After that, changes are covered by a care plan (from £30 a month) or charged as pay-as-you-go fixes from £45."
+  },
+  {
+    "category": "Web design",
+    "question": "Can you redesign my existing website?",
+    "answer": "Yes. I can rebuild it from scratch and move your content and domain across from Wix, Squarespace or similar."
+  }
+]

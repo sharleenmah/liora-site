@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Launch Bundle",
+    "price": "from £725",
+    "desc": "Essential website + a 1-hour brand portrait shoot"
+  },
+  {
+    "name": "Brand & Web Bundle",
+    "price": "from £1,750",
+    "desc": "Signature website + a brand photoshoot + matching social media graphics"
+  },
+  {
+    "name": "Studio Complete",
+    "price": "Quoted per project",
+    "desc": "Studio or Shop website + brand photography + logo and brand identity"
+  }
+]
