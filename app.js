@@ -219,7 +219,16 @@ function projHTML(p){var L=p.imgs.length,out=[],sh=(p.ss||[]).filter(function(s)
   function put(n){sh.forEach(function(s){if(s._a===n)out.push(ssHTML(s.imgs))})}
   put(0);p.imgs.forEach(function(s,i){out.push(s?'<img class="pic'+(i==0?' w':'')+'"'+(i==0?'':' onload="if(this.naturalHeight)this.style.setProperty(\'--ar\',this.naturalWidth/this.naturalHeight)"')+' src="'+String(s).replace(/"/g,"%22")+'" alt="" decoding="async" loading="lazy">':'<div'+(i==0?' class="w"':'')+' style="background:'+bg({img:s},i+3)+'"></div>');put(i+1)});
   return'<h2>'+p.title+'</h2><div class="pm"><ul>'+p.meta.map(function(m){return'<li><b>'+m[0]+'</b>'+m[1]+'</li>'}).join("")+'</ul><div class="dp">'+dpar(p.desc)+'</div></div><div class="pim">'+out.join("")+'</div>'}
-var pjTs=[];function pshows(){pjTs.forEach(clearInterval);pjTs=[];[].forEach.call(document.querySelectorAll("#pji .pss"),function(el){var im=el.children,k=0;if(im.length<2)return;pjTs.push(setInterval(function(){im[k].classList.remove("on");k=(k+1)%im.length;im[k].classList.add("on")},2000))})}
+/* project photo rows: make every slideshow exactly as tall as the tallest photo beside it (same on every browser) */
+var eqT=0;
+function eqPss(){var g=document.querySelector("#pji .pim");if(!g)return;var it=[].slice.call(g.children),rows=[];
+  it.forEach(function(e){if(e.classList.contains("pss"))e.style.height=""});
+  it.forEach(function(e){var t=e.getBoundingClientRect().top,r=null;rows.forEach(function(x){if(Math.abs(x.t-t)<8)r=x});if(!r){r={t:t,e:[]};rows.push(r)}r.e.push(e)});
+  rows.forEach(function(r){var mx=0;r.e.forEach(function(e){mx=Math.max(mx,e.getBoundingClientRect().height)});r.e.forEach(function(e){if(e.classList.contains("pss")&&Math.abs(e.getBoundingClientRect().height-mx)>1)e.style.height=mx+"px"})})}
+function eqSoon(){cancelAnimationFrame(eqT);eqT=requestAnimationFrame(eqPss)}
+document.addEventListener("load",function(e){var t=e.target;if(t&&t.tagName=="IMG"&&t.closest&&t.closest("#pji"))eqSoon()},true);
+addEventListener("resize",eqSoon);addEventListener("orientationchange",function(){setTimeout(eqSoon,300)});
+var pjTs=[];function pshows(){pjTs.forEach(clearInterval);pjTs=[];setTimeout(eqSoon,120);setTimeout(eqSoon,900);[].forEach.call(document.querySelectorAll("#pji .pss"),function(el){var im=el.children,k=0;if(im.length<2)return;pjTs.push(setInterval(function(){im[k].classList.remove("on");k=(k+1)%im.length;im[k].classList.add("on")},2000))})}
 function dpar(x){return String(x||"").split(/\n\s*\n/).map(function(s){return"<p>"+esc(s.trim())+"</p>"}).join("")}
 function fmtC(v,p,n){v=parseFloat(v);if(isNaN(v))return"";return Math.abs(v).toFixed(4)+"° "+(v>=0?p:n)}
 function mapHTML(t){var la=fmtC(t.lat,"N","S"),lo=fmtC(t.lon,"E","W");if(!t.mapImg&&!(la&&lo))return"";
@@ -255,7 +264,7 @@ function spOn(p){[].forEach.call(document.querySelectorAll("#sv2 .sp"),function(
  function card(p,i){return'<article class="pk rvx" style="--d:'+(i%4)*90+'ms"><p class="sm pn">'+esc(p.n.toUpperCase())+'</p><p class="pp"><small>from</small> <b class="cu">'+esc(p.pr)+'</b></p>'+(p.bf?'<p class="pb">'+esc(p.bf)+'</p>':'')+'<ul>'+p.d.map(function(d){return"<li>"+esc(d)+"</li>"}).join("")+'</ul></article>'}
  function cards(pk){var groups=[],seen={};pk.forEach(function(p){if(!(p.g in seen)){seen[p.g]=groups.length;groups.push({g:p.g,a:[]})}groups[seen[p.g]].a.push(p)});
   return groups.map(function(g){return(g.g?'<h3 class="pg">'+esc(g.g)+'</h3>':'')+'<div class="pks">'+g.a.map(function(p,i){return card(p,i)}).join("")+'</div>'}).join("")}
- $("prc").innerHTML='<div class="ic"></div><h1>PRICING</h1>'+(CONTENT.ptext.intro?'<p class="pi">'+esc(CONTENT.ptext.intro)+'</p>':'')
+ $("prc").innerHTML='<div class="ic"></div><h1>PRICING</h1>'+(CONTENT.ptext.intro?'<p class="pintro">'+esc(CONTENT.ptext.intro)+'</p>':'')
   +'<nav class="pnav sm" aria-label="Services">'+P.map(function(s){return'<a href="/pricing#p-'+s.slug+'">'+esc(s.name.toUpperCase())+'</a>'}).join("")+(CONTENT.bundles.length?'<a href="/pricing#p-bundles">BUNDLES</a>':'')+'</nav>'
   +P.map(function(s,i){return'<section class="ps" id="p-'+s.slug+'"><header class="rvx"><span class="sm" style="color:var(--yel)">'+pad(i+1)+'</span><h2>'+esc(s.name)+'</h2>'+(s.from?'<p class="sm pf2">FROM <b>'+esc(s.from)+'</b></p>':'')+'</header>'
    +s.intro.map(function(x){return'<p class="pin rvx">'+esc(x)+'</p>'}).join("")+cards(s.pk)
@@ -281,7 +290,7 @@ function spOn(p){[].forEach.call(document.querySelectorAll("#sv2 .sp"),function(
 })();
 /* FAQs page (content/faqs.json) */
 (function(){var F=CONTENT.faqs;if(!$("faq"))return;var cats=[];F.forEach(function(f){if(cats.indexOf(f.c)<0)cats.push(f.c)});
- $("faq").innerHTML='<div class="ic"></div><h1>FAQS</h1>'+(CONTENT.ptext.faq?'<p class="pi">'+esc(CONTENT.ptext.faq)+'</p>':'')
+ $("faq").innerHTML='<div class="ic"></div><h1>FAQS</h1>'+(CONTENT.ptext.faq?'<p class="pintro">'+esc(CONTENT.ptext.faq)+'</p>':'')
   +'<div class="fqf sm"><button type="button" class="on" data-fc="">ALL</button>'+cats.map(function(c){return'<button type="button" data-fc="'+esc(c)+'">'+esc(c.toUpperCase())+'</button>'}).join("")+'</div>'
   +'<div class="fqw">'+cats.map(function(c){return'<section class="fqc" data-c="'+esc(c)+'"><h2>'+esc(c)+'</h2>'+F.filter(function(f){return f.c==c}).map(function(f){return'<details class="fq"><summary>'+esc(f.q)+'</summary><div>'+f.a.map(function(x){return"<p>"+esc(x)+"</p>"}).join("")+'</div></details>'}).join("")+'</section>'}).join("")+'</div>'
   +'<div class="guide"><h2>Still wondering?</h2><p>Send me a message and I’ll get back to you as soon as I can.</p><div class="gbt"><a class="btn sm" href="/#enquire">ASK A QUESTION</a><a class="btn sm ghost" href="/pricing">SEE PRICING</a></div></div>';
