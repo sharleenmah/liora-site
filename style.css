@@ -291,6 +291,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--yel);outline-offset
  .so:first-of-type .tl>.tile:last-child:nth-child(odd){grid-column:1/-1;width:calc(50% - .5rem);justify-self:center}
  .mo{gap:.8rem;grid-auto-rows:calc((90vw - .8rem)/2/1.55);grid-auto-flow:dense}
  .reveal{display:none}
+ .tabs{flex-wrap:wrap;gap:.4rem 1.3rem}
  .cats li.cc{position:relative;overflow:hidden;border-radius:4px;margin-bottom:.8rem;min-height:clamp(88px,calc((100svh - 330px)/4),150px);display:flex;align-items:flex-end;background-position:var(--fx,50%) var(--fy,50%)!important}
  .sp .bgi{background-position:var(--fx,50%) var(--fy,50%)!important}
  .cats li.cc::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(24,24,26,.85),rgba(24,24,26,.35))}
@@ -314,7 +315,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--yel);outline-offset
 .btn.ghost:hover{border-color:var(--yel);background:var(--yel);color:var(--char)}
 button.btn{font:400 .78rem "Jost",sans-serif;letter-spacing:.22em}
 /* pricing page */
-.pi{max-width:60ch;margin:-1rem auto 0;text-align:center;opacity:.9}
+.pintro{max-width:60ch;margin:-1rem auto 0;text-align:center;opacity:.9}
 .pnav{position:sticky;top:4.6rem;z-index:3;display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin:3rem auto 0;padding:.8rem 0;background:rgba(43,43,45,.92);backdrop-filter:blur(8px)}
 .pnav a{padding:.5rem .9rem;border:1px solid #5d5d61;border-radius:999px;transition:border-color .3s,color .3s}
 .pnav a:hover{border-color:var(--yel);color:var(--yel)}
